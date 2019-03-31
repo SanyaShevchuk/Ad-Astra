@@ -1,0 +1,262 @@
+@font-face {
+font-family: 'Larsseit';
+src: url('fonts/Larsseit.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+}
+
+@font-face {
+font-family: 'LeMondeLivre';
+src: url('fonts/LeMondeLivre-Italic.otf') format('truetype');
+font-weight: normal;
+font-style: normal;
+}
+
+@font-face {
+font-family: 'Panton';
+src: url('fonts/PantonExtraBoldItalic.otf') format('truetype');
+font-weight: normal;
+font-style: normal;
+}
+
+*{
+  margin: auto;
+}
+
+body{
+
+  margin: 0 10%;
+}
+
+nav{
+  margin-top: 0;
+  margin-bottom: 2%;
+}
+
+.navbar{
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.navbar-header{
+  width: 100%;
+  /* margin-left: 2%; */
+  margin-left: 0;
+}
+
+
+.navbar-header img{
+  width: 5%;
+  height: auto;
+  margin-top: 1.5%;
+  cursor: pointer;
+}
+
+
+.navbar-header .logo{
+  width: 7%;
+  float: right;
+  margin-top: 0%;
+}
+
+.navbar-header span{
+  cursor: pointer;
+  font-family: 'Panton', serif;
+  font-size: 2.5vw;
+}
+
+#nav-bar-collapse-1{
+  position: absolute;
+  top: 100%;
+  color: black;
+  background-color: white;
+  width: 100%;
+  height: 550%;
+  z-index: 11;
+}
+
+#nav-bar-collapse-1 .row{
+  margin-top: 5%;
+}
+
+#nav-bar-collapse-1 ul{
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#nav-bar-collapse-1 li{
+  margin-top: 3%;
+}
+
+#nav-bar-collapse-1 li a{
+  text-decoration: none;
+  color: black;
+}
+
+.col-4{
+  margin-top: 0;
+}
+
+.col-4 .section-title hr{
+  margin: 6% 0;
+  width: 50px;
+  height: 4px;
+}
+
+.social-media img{
+  width: 12%;
+  height: auto;
+  cursor: pointer;
+  margin-right: 6%;
+}
+
+#first-news .photo{
+  position: relative;
+  cursor: pointer;
+}
+
+#first-news .photo img{
+  width: 65%;
+  height: auto;
+}
+
+#first-news .photo .href-on-photo{
+  font-size: 20px;
+  opacity: .8;
+  padding: 7.5px 30px;
+}
+
+.photo .href-on-photo{
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: 'Haarlemmer W04','Georgia',serif;
+  background: rgba(0,0,0,0.8);
+  border-top: 5px solid #f25d27;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  opacity: .8;
+  padding: 3px 20px;
+}
+
+.news{
+  background-color: rgb(240,244,244);
+}
+
+#first-news h1{
+  margin-left: 0;
+  width: 65%;
+  font-size: 1.8vw;
+  margin-bottom: 1%;
+}
+
+#first-news p{
+  font-size: 1.5vw;
+  text-align: left;
+  margin-bottom: 1%;
+}
+
+#first-news .article-author{
+  font-style: italic;
+  font-size: 1.1vw;
+}
+
+#first-news{
+  position: relative;
+}
+
+.second-news{
+  /* position: absolute;
+  right: 0; */
+  float: right;
+
+}
+
+.container{
+  padding: 0;
+}
+
+.section-title hr{
+  width: 140px;
+  height: 5px;
+  margin-top: 3%;
+  margin-left: 0;
+  margin-bottom: 0;
+  background-color: #f25d27;
+}
+
+.section-title p{
+  font-size: 3vw;
+  color: #04284a;
+  margin-bottom: 0;
+}
+
+.row{
+  margin: 0;
+}
+
+.news, .expert{
+  width: 25%;
+  height: 25%;
+  margin: 5% 0 0 0;
+  padding: 0;
+}
+
+.news img{
+  width: 100%;
+}
+
+.news h1{
+  font-size: 1.4vw;
+  font-family: 'Larsseit', serif;
+  margin-top: 1%;
+  margin-bottom: 1.5%;
+  font-weight: 600;
+}
+
+.news p{
+  font-size: 1.2vw;
+  text-align: left;
+  margin-bottom: 1%;
+}
+
+.news .article-author{
+  font-size: 1.0vw;
+}
+
+.news .external-link-alt-solid{
+  float: right;
+  margin-right: 2%;
+  width: 7%;
+  height: auto;
+  opacity: 0.2;
+}
+
+#expert-section{
+  margin-top: 10%;
+}
+
+.expert {
+  /* background-color: #f9f9f9; */
+  background-color: rgb(240,244,244);
+}
+
+.expert img{
+  margin-top: -10%;
+  margin-left: 65%;
+  width: 30%;
+  height: auto;
+  border-radius: 50%;
+  border: 1px solid orange;
+}
+
+.expert h1{
+  font-size: 1.7vw;
+  font-family: 'Larsseit', 'Arial', serif;
+}
+
+.expert blockquote{
+  font-family: 'LeMondeLivre', serif;
+  font-size: 1.2vw;
+}
