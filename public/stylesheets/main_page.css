@@ -1,0 +1,184 @@
+#first-news .photo, #second-news .photo{
+  position: relative;
+  cursor: pointer;
+}
+
+#first-news .photo img, #second-news .photo img{
+  width: 100%;
+  height: auto;
+}
+
+#first-news .photo .href-on-photo{
+  font-size: 20px;
+  opacity: .8;
+  padding: 7.5px 30px;
+}
+
+#second-news{
+  background-color: rgb(240,244,244);
+}
+
+#second-news .photo .href-on-photo{
+  font-size: 14px;
+  opacity: .8;
+  padding: 7.5px 30px;
+}
+
+.photo .href-on-photo{
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: 'Haarlemmer W04','Georgia',serif;
+  background: rgba(0,0,0,0.8);
+  border-top: 5px solid #f25d27;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  opacity: .8;
+  padding: 3px 20px;
+}
+
+#second-news .photo .href-on-photo{
+  font-size: 14px;
+  padding: 1px 15px;
+}
+
+.news{
+  background-color: rgb(240,244,244);
+}
+
+#first-news h1, #second-news h1{
+  margin-left: 0;
+  width: 100%;
+  font-size: 1.8vw;
+  margin-bottom: 1%;
+}
+
+#second-news h1{
+  width: 100%;
+  font-size: 1.4vw;
+}
+
+#first-news p, #second-news p{
+  font-size: 1.4vw;
+  text-align: left;
+  margin-bottom: 1%;
+}
+
+#second-news p{
+  font-size: 1vw;
+}
+
+#first-news .article-author{
+  /*position: absolute;*/
+  /*bottom: 0;*/
+  margin-bottom: 0;
+  margin-top: 4%;
+  font-style: italic;
+  font-size: 1.1vw;
+}
+
+#second-news .article-author{
+  font-style: italic;
+  font-size: 0.9vw;
+}
+
+.container{
+  padding: 0;
+}
+
+.section-title hr{
+  width: 140px;
+  height: 5px;
+  margin-top: 3%;
+  margin-left: 0;
+  margin-bottom: 0;
+  background-color: #f25d27;
+}
+
+.section-title p{
+  font-size: 3vw;
+  color: #04284a;
+  margin-bottom: 0;
+}
+
+.row{
+  margin: 0;
+}
+
+.news, .expert{
+  width: 25%;
+  height: 25%;
+  margin: 3% 0 0 0;
+  padding: 0;
+}
+
+.news img{
+  width: 100%;
+}
+
+.news h1{
+  font-size: 1.4vw;
+  font-family: 'Larsseit', serif;
+  margin-top: 1%;
+  margin-bottom: 1.5%;
+  font-weight: 600;
+}
+
+.news p{
+  font-size: 0.9vw;
+  text-align: left;
+  margin-bottom: 1%;
+}
+
+.news .article-author{
+  float: right;
+  font-size: 1.0vw;
+}
+
+.news .external-link-alt-solid{
+  float: right;
+  margin-right: 2%;
+  width: 7%;
+  height: auto;
+  opacity: 0.2;
+}
+
+#expert-section{
+  margin-top: 7%;
+}
+
+.expert {
+  /* background-color: #f9f9f9; */
+  background-color: rgb(240,244,244);
+}
+
+.expert img{
+  margin-top: -10%;
+  margin-left: 65%;
+  width: 30%;
+  height: auto;
+  border-radius: 50%;
+  border: 1px solid orange;
+}
+
+.expert h1{
+  font-size: 1.7vw;
+  font-family: 'Larsseit', 'Arial', serif;
+}
+
+.expert blockquote{
+  font-family: 'LeMondeLivre', serif;
+  font-size: 1.2vw;
+}
+
+a{
+  text-transform: uppercase;
+  text-decoration: none;
+  color: black;
+}
+
+a:hover{
+  text-decoration: none;
+  color: black;
+}

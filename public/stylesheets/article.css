@@ -1,0 +1,27 @@
+#news-title {
+  background-color: rgb(249,249,249);
+}
+
+.news-title-photo{
+  position: relative;
+  float:right;
+  width: 45%;
+}
+
+.news-title-photo img{
+  width: 100%;
+}
+
+.news-title-photo a{
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: 'Haarlemmer W04','Georgia',serif;
+  background: rgba(0,0,0,0.8);
+  border-top: 5px solid #f25d27;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  opacity: .8;
+  padding: 3px 20px;
+}

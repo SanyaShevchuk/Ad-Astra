@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="/stylesheets/topics.css">
+<div id="main">
+    <div id="topic-title">
+        <img src="/images/topics/{{news.0.topic}}.jpg" id="topic-title-pic" alt="">
+        <span>{{news.0.topic}}</span>
+    </div>
+    <section id="news-section">
+        <div class="section-title">
+            <hr>
+            <p>News</p>
+        </div>
+        <div class="container">
+            <div class="row">
+                {{# each news}}
+                <a href="article?id={{this.id}}">
+                <div class="col-3 news">
+                    <div class="photo">
+                        <img src="/images/articles/{{this.id}}.jpg" alt="" class="img-responsive">
+                        {{#if this.region}}
+                            <a class="href-on-photo" href="article?id={{this.id}}">{{this.region}}</a>
+                        {{else}}
+                            <a class="href-on-photo" href="article?id={{this.id}}">recent</a>
+                        {{/if}}
+                    </div>
+                    <h1>{{this.title}}</h1>
+                    <hr>
+                    <a href="article?id={{this.id}}">
+                    <img src="/images/label/external-link-alt-solid.svg"
+                         class="external-link-alt-solid text-right">
+                    <p>{{this.description}}</p>
+                    <p class="article-author font-italic" >{{this.author}}</p>
+                    </a>
+                </div>
+                </a>
+                    <div class="col-1"></div>
+                {{/each}}
+            </div>
+         </div>
+    </section>
+</div>

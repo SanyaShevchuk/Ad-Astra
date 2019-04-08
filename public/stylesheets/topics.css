@@ -1,0 +1,36 @@
+
+.logo-pic{
+  width: 100%;
+  height: auto;
+}
+
+#second-news .title-topic{
+  font-size: 2.2vw;
+  margin-bottom: 9%;
+}
+
+#topic-title{
+  position: relative;
+}
+
+#topic-title-pic{
+  width: 70%;
+  margin-left: 15%;
+}
+
+#topic-title span{
+  position: absolute;
+
+  left: 15%;
+  top: 0;
+  font-size: 2vw;
+  /*color: white;*/
+  text-transform: uppercase;
+  font-family: 'Haarlemmer W04','Georgia',serif;
+  /*background: rgba(0,0,0,0.8);*/
+  background: rgba(255,255,255,0.8);
+  border-top: 5px solid #f25d27;
+  color: black;
+  opacity: .8;
+  padding: 3px 20px;
+}
