@@ -4,13 +4,13 @@ var mongo = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
 
-var url = 'mongodb://localhost:27017/adastra';
+var url = 'mongodb://sheva:sheva@localhost:27017/adastra';
 
 router.get('/topic', function(req,res,next){
   mongo.connect(url, function(err, db){
     var news = [];
     assert.equal(null, err);
-    var cursor = db.collection('articles').find({'topic':req.query.name});
+    var cursor = db.collection('article').find({'topic':req.query.name});
     cursor.forEach(function(doc, err){
       assert.equal(null, err);
       news.push(doc);
@@ -25,7 +25,7 @@ router.get('/region', function(req,res,next){
   mongo.connect(url, function(err, db){
     var news = [];
     assert.equal(null, err);
-    var cursor = db.collection('articles').find({'region':req.query.name});
+    var cursor = db.collection('article').find({'region':req.query.name});
     cursor.forEach(function(doc, err){
       assert.equal(null, err);
       news.push(doc);
@@ -40,7 +40,7 @@ router.get('/article', function(req, res, next) {
   mongo.connect(url, function (err, db) {
     var news;
     assert.equal(null, err);
-    var cursor = db.collection('articles').findOne({'id': Number(req.query.id)})
+    var cursor = db.collection('article').findOne({'id': Number(req.query.id)})
         .then(function(doc){
           if(!doc){
             throw new Error('No record found.');
@@ -60,7 +60,7 @@ router.get('/', function(req, res, next) {
     var experts = [];
     assert.equal(null, err);
     var i=0;
-    var cursor= db.collection('articles').find().sort({date:-1});
+    var cursor= db.collection('article').find().sort({date:-1});
     cursor.forEach(function(doc, err) {
       assert.equal(null, err);
       if(i==0) main_news = doc;
