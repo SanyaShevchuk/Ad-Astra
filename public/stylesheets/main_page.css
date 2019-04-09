@@ -102,6 +102,13 @@
   margin-bottom: 0;
 }
 
+.section-title a{
+  text-transform: none;
+  font-size: 3vw;
+  color: #04284a;
+  margin-bottom: 0;
+}
+
 .row{
   margin: 0;
 }
@@ -182,3 +189,4 @@ a:hover{
   text-decoration: none;
   color: black;
 }
+

@@ -5,7 +5,7 @@
                         <a href="article?id={{main_news.id}}">
                             <section id = "first-news">
                                 <div class="photo">
-                                    <img src="public/images/articles/{{main_news.id}}.jpg" class="img-responsive">
+                                    <img src="/images/articles/{{main_news.id}}.jpg" class="img-responsive">
                                     {{#if main_news.topic}}
                                         <a class="href-on-photo" href="article?id={{main_news.id}}">{{main_news.topic}}</a>
                                     {{else if main_news.region}}
@@ -47,10 +47,6 @@
     </div>
 
     <section id="news-section">
-        <div class="section-title">
-            <hr>
-            <p>News</p>
-        </div>
         <div class="container">
             <div class="row">
                 {{# each other_news}}
@@ -90,7 +86,7 @@
     <section id="expert-section">
         <div class="section-title">
             <hr>
-            <p>Expert Spotlight</p>
+            <p>Думка експерта</p>
         </div>
 
         <div class="container">

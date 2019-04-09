@@ -1,0 +1,22 @@
+#contact-title{
+  text-align: center;
+  font-size: 3vw;
+  color: darkgoldenrod;
+  margin-bottom: 5%;
+  margin-top: 2%;
+}
+
+.contact{
+  margin: 1.5% 0;
+}
+
+.contact span{
+  color: teal;
+  font-size: 1.4vw;
+}
+
+.contact a{
+  color: crimson;
+  font-weight: 700;
+  font-size: 1.5vw;
+}

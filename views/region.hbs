@@ -5,10 +5,6 @@
         <span>{{news.0.region}}</span>
     </div>
     <section id="news-section">
-        <div class="section-title">
-            <hr>
-            <p>News</p>
-        </div>
         <div class="container">
             <div class="row">
                 {{# each news}}
@@ -19,7 +15,7 @@
                         {{#if this.topic}}
                             <a class="href-on-photo" href="article?id={{this.id}}">{{this.topic}}</a>
                         {{else}}
-                            <a class="href-on-photo" href="article?id={{this.id}}">recent</a>
+                            <a class="href-on-photo" href="article?id={{this.id}}">останні</a>
                         {{/if}}
                     </div>
                     <h1>{{this.title}}</h1>
