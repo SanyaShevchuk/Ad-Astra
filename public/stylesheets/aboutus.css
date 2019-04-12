@@ -3,3 +3,19 @@
   font-weight: 600;
   font-size: 2vw;
 }
+
+#title-photo{
+  width: 70%;
+  margin: auto;
+  display: block;
+  margin-bottom: 2%;
+}
+
+#expert{
+  margin: auto;
+  text-align: center;
+}
+
+#expert-photo{
+  width: 33%;
+}

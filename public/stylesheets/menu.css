@@ -6,6 +6,11 @@ font-style: normal;
 }
 
 @font-face {
+  font-family: 'Jura';
+  src: url("fonts/Jura-Regular.otf");
+}
+
+@font-face {
 font-family: 'LeMondeLivre';
 src: url('fonts/LeMondeLivre-Italic.otf') format('truetype');
 font-weight: normal;
@@ -87,6 +92,7 @@ nav{
 #nav-bar-collapse-1 li a{
   text-decoration: none;
   color: black;
+  font-family: 'Jura';
 }
 
 .col-4{
@@ -183,5 +189,25 @@ nav{
   }
   to{
     display: none;
+  }
+}
+
+@media screen and (max-width: 920px){
+  .nav-links{
+    font-size: 2.5vw;
+  }
+
+  .nav-links li{
+    margin-bottom: 15%;
+  }
+
+  #nav-bar-collapse-1{
+    height: 800%;
+  }
+
+  .social-media img{
+    width: 25%;
+    display: block;
+    margin-bottom: 20%;
   }
 }

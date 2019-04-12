@@ -30,7 +30,7 @@
   left: 0;
   font-family: 'Haarlemmer W04','Georgia',serif;
   background: rgba(0,0,0,0.8);
-  border-top: 5px solid #f25d27;
+  border-top: 5px solid rgb(0, 0, 255);
   color: #ffffff;
   text-decoration: none;
   font-size: 16px;
@@ -93,7 +93,7 @@
   margin-top: 3%;
   margin-left: 0;
   margin-bottom: 0;
-  background-color: #f25d27;
+  background-color: rgb(0, 0, 255);
 }
 
 .section-title p{

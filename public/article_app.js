@@ -1,0 +1,1 @@
+$('#main-text-article').html($('#main-text-article').text());

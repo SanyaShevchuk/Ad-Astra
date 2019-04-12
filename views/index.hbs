@@ -6,12 +6,10 @@
                             <section id = "first-news">
                                 <div class="photo">
                                     <img src="/images/articles/{{main_news.id}}.jpg" class="img-responsive">
-                                    {{#if main_news.topic}}
-                                        <a class="href-on-photo" href="article?id={{main_news.id}}">{{main_news.topic}}</a>
-                                    {{else if main_news.region}}
-                                        <a class="href-on-photo" href="article?id={{main_news.id}}">{{main_news.region}}</a>
+                                    {{#if main_news.subtopic}}
+                                        <a class="href-on-photo" href="article?id={{main_news.id}}">{{main_news.subtopic}}</a>
                                     {{else}}
-                                        <a class="href-on-photo" href="article?id={{main_news.id}}">news</a>
+                                        <a class="href-on-photo" href="article?id={{main_news.id}}">останні</a>
                                     {{/if}}
                                 </div>
                                 <h1 class="mark">{{main_news.title}}</h1>
@@ -27,10 +25,8 @@
                     <div class="second-news">
                         <div class="photo">
                             <img src="/images/articles/{{second_news.id}}.jpg" class="img-responsive">
-                            {{#if second_news.topic}}
-                                <a class="href-on-photo" href="article?id={{second_news.id}}">{{second_news.topic}}</a>
-                            {{else if second_news.region}}
-                                <a class="href-on-photo" href="article?id={{second_news.id}}">{{second_news.region}}</a>
+                            {{#if second_news.subtopic}}
+                                <a class="href-on-photo" href="article?id={{second_news.id}}">{{second_news.subtopic}}</a>
                             {{else}}
                                 <a class="href-on-photo" href="article?id={{second_news.id}}">news</a>
                             {{/if}}
@@ -50,15 +46,12 @@
         <div class="container">
             <div class="row">
                 {{# each other_news}}
-
                 <div class="col-3 news">
                     <a href="article?id={{this.id}}">
                     <div class="photo">
                         <img src="/images/articles/{{this.id}}.jpg" alt="" class="img-responsive">
-                        {{#if this.topic}}
-                            <a class="href-on-photo" href="article?id={{this.id}}">{{this.topic}}</a>
-                        {{else if this.region}}
-                            <a class="href-on-photo" href="article?id={{this.id}}">{{this.region}}</a>
+                        {{#if this.subtopic}}
+                            <a class="href-on-photo" href="article?id={{this.id}}">{{this.subtopic}}</a>
                         {{else}}
                             <a class="href-on-photo" href="article?id={{this.id}}">news</a>
                         {{/if}}
@@ -93,7 +86,7 @@
             <div class="row">
                 {{# each experts}}
                 <div class="col-3 expert">
-                    <img src="/images/experts/{{this.id_author}}.jpg" alt="">
+                    <img src="/images/experts/{{this.expert}}.jpg" alt="">
                     <blockquote class="font-italic">{{this.author}}</blockquote>
 <!--                    <blockquote class="font-italic text-right">Quote</blockquote>-->
                     <hr>

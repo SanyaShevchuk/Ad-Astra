@@ -3,6 +3,7 @@
 
 <div id="main">
     <h1 id="contact-title">ПРО НАС</h1>
+    <img id="title-photo" src="images/aboutus/main.jpg" alt="">
     <div>
         <h2>Преамбула</h2>
         <p>Усвідомлюючи недостатність кваліфікованих аналітичних матеріалів з тематики міжнародних відносин, розроблених в Україні;<br>
@@ -29,4 +30,12 @@
             <li>організовувати конференції, панельні дискусії та круглі столи із залученням незалежних експертів, представників органів державної влади та громадського сектору</li>
         </ul>
     </div>
+
+    {{# each experts}}
+        <div id="expert">
+            <h2>{{this.name}}</h2>
+            <img id="expert-photo" src="images/aboutus/{{this.id}}.jpg" alt="">
+            <p>{{this.description}}</p>
+        </div>
+    {{/each}}
 </div>
