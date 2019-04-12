@@ -4,8 +4,8 @@ var mongo = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
 
-var url = 'mongodb://sheva:sheva@localhost:27017/adastra';
-// var url = 'mongodb://localhost:27017/adastra';
+// var url = 'mongodb://sheva:sheva@localhost:27017/adastra';
+var url = 'mongodb://localhost:27017/adastra';
 
 router.get('/topic', function(req,res,next){
   mongo.connect(url, function(err, db){
@@ -58,24 +58,40 @@ router.get('/contacts', function(req, res, next) {
 });
 
 router.get('/aboutus', function(req, res, next) {
-  res.render('aboutus');
+  mongo.connect(url, function(err,db){
+    let experts = [];
+    let cursor = db.collection('experts').find().sort({id:1});
+    cursor.forEach(function(doc, err){
+      experts.push(doc);
+    }, function(){
+      db.close();
+      res.render('aboutus', {experts:experts});
+    })
+  })
 });
 
 router.get('/', function(req, res, next) {
   mongo.connect(url, function(err, db) {
-    var main_news, second_news = {};
-    var other_news = [];
-    var experts = [];
+    let main_news, second_news = {};
+    let other_news = [];
+    let experts = [];
     assert.equal(null, err);
-    var i=0;
-    var cursor= db.collection('article').find().sort({date:-1});
+    let i=0;
+    let cursor= db.collection('article').find().sort({date:-1});
+//{expert:{$exists:false}}
     cursor.forEach(function(doc, err) {
       assert.equal(null, err);
-      if(i==0) main_news = doc;
-      else if(i==1) second_news = doc;
+      if(doc.expert) experts.push(doc)
+      else if(i==0) {
+        main_news = doc;
+        i++;
+      }
+      else if(i==1) {
+        second_news = doc;
+        i++;
+      }
       else other_news.push(doc);
-      i++;
-      if(doc.id_author) experts.push(doc);
+
     }, function() {
       db.close();
       res.render('index', {other_news: other_news, main_news: main_news, second_news: second_news, experts:experts});
