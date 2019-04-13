@@ -196,6 +196,14 @@ a:hover{
     display: none;
   }
 
+  #first-news p, #second-news p{
+    font-size: 2.8vw;
+  }
+
+  #first-news .article-author, #second-news .article-author{
+    font-size: 2.6vw;
+  }
+
   .col-sm-10{
     width: 90%;
     margin-left: 5%;
