@@ -1,7 +1,7 @@
 <div id="main">
     <div class="container">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-lg-8 col-sm-6">
                         <a href="article?id={{main_news.id}}">
                             <section id = "first-news">
                                 <div class="photo">
@@ -19,7 +19,7 @@
                             </section>
                         </a>
             </div>
-            <div class="col-4">
+            <div class="col-lg-4 col-sm-6">
                 <a href="article?id={{second_news.id}}">
                 <section id="second-news">
                     <div class="second-news">
@@ -46,8 +46,8 @@
         <div class="container">
             <div class="row">
                 {{# each other_news}}
-                <div class="col-3 news">
-                    <a href="article?id={{this.id}}">
+                <div class="col-lg-3 col-sm-10 news">
+<!--                    <a href="article?id={{this.id}}">-->
                     <div class="photo">
                         <img src="/images/articles/{{this.id}}.jpg" alt="" class="img-responsive">
                         {{#if this.subtopic}}
@@ -60,7 +60,7 @@
                     <h1>{{this.title}}</h1>
                     <hr>
                     <a href="article?id={{this.id}}">
-                    <img src="/images/label/external-link-alt-solid.svg"
+                    <img src="/images/label/external-link-alt-solid.svg" id="external-link"
                          class="external-link-alt-solid text-right">
                     <p>{{this.description}}</p>
                     <p class="article-author font-italic" >{{this.author}}</p>
@@ -85,7 +85,7 @@
         <div class="container">
             <div class="row">
                 {{# each experts}}
-                <div class="col-3 expert">
+                <div class="col-lg-3 col-sm-10 expert">
                     <img src="/images/experts/{{this.expert}}.jpg" alt="">
                     <blockquote class="font-italic">{{this.author}}</blockquote>
 <!--                    <blockquote class="font-italic text-right">Quote</blockquote>-->
@@ -94,7 +94,7 @@
                         <p>{{this.title}}</p>
                     </a>
                 </div>
-                <div class="col-1"></div>
+                <div class="col-lg-1 col-sm-0"></div>
                 {{/each}}
             </div>
             <!-- col-xs-12 col-sm-6 col-md-4 col-lg-3 -->

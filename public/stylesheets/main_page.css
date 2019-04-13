@@ -190,3 +190,55 @@ a:hover{
   color: black;
 }
 
+
+@media screen and (max-width: 920px){
+  .col-1{
+    display: none;
+  }
+
+  .col-sm-10{
+    width: 90%;
+    margin-left: 5%;
+  }
+
+  .col-sm-10 .photo img{
+    width: 70%;
+    display: block;
+    margin: auto;
+    margin-top: 5%;
+  }
+
+  .col-sm-10 .photo a{
+    top: 5%;
+    left: 15%;
+  }
+
+  .col-sm-10 h1{
+    font-size: 2.4vw;
+    text-align: center;
+  }
+
+  .col-sm-10 p{
+    font-size: 1.8vw;
+  }
+
+  .col-sm-10 .article-author{
+    font-size: 1.7vw;
+  }
+
+  #external-link{
+    width: 5%;
+  }
+
+  .expert{
+    margin-bottom: 10%;
+  }
+
+  .expert blockquote{
+    font-size: 2.3vw;
+  }
+
+  .expert p{
+    font-size: 2vw;
+  }
+}
