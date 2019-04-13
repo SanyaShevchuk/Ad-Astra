@@ -1,20 +1,33 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" dir="ltr">-->
-<!--<head>-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">-->
-<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
-<!--    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
-<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>-->
-<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
-<!--    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>-->
-<!--    <link rel="stylesheet" href="/stylesheets/article.css">-->
-<!--    <link rel="stylesheet" href="/stylesheets/menu.css">-->
-<!--    <meta charset="utf-8">-->
-<!--    <title></title>-->
-<!--</head>-->
-<!--<body>-->
-<link rel="stylesheet" href="/stylesheets/article.css">
+<head>
+    <link rel="stylesheet" href="/stylesheets/article.css">
+    <!-- You can use Open Graph tags to customize link previews.
+    Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
+<!--    <meta property="og:url"           content="http://www.adastra.icu/" />-->
+<!--    <meta property="og:type"          content="image/jpeg" />-->
+<!--    <meta property="og:title"         content="Title" />-->
+<!--    <meta property="og:description"   content="description" />-->
+<!--    <meta property="og:image"         content="http://adastra.icu/images/label/logo.png" />-->
+<!--    <meta content='TestedCodes' property='og:title'/>-->
+<!--    <meta content='Introducing Important basic codes which a programmer needs to know  ' property='og:description'/>-->
+<!--    <meta content='http://www.testedcodes.net' property='og:url'/>-->
+<!--    <meta content='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN90lduXisEbSyVbU4SHa-vcRjQeSZZH7d8kY7AkX3L-f56dFhFw'-->
+<!--          property='og:image'/>-->
+<!--    <script>-->
+<!--        function myFunction() {-->
+<!--            var x = document.URL;-->
+<!--            document-->
+<!--                    .getElementById("facebook-share-button")-->
+<!--                    .src = 'https://www.facebook.com/plugins/share_button.php?href=http://adastra.icu/&layout=button_count&size=large&mobile_iframe=true&width=83&height=28&appId';-->
+<!--        }-->
+<!--    </script>-->
+</head>
+<body onload="myFunction()">
 <div id="main">
+<!--    <div id="fb-root"></div>-->
+<!--    <script async defer crossorigin="anonymous"-->
+<!--            src="https://connect.facebook.net/uk_UA/sdk.js#xfbml=1&version=v3.2&appId=215299406056993&autoLogAppEvents=1">-->
+<!--    </script>-->
+
     <section id="news-title">
         <div class="news-title-photo">
             <img src="images/articles/{{news.id}}.jpg" class="img-responsive" >
@@ -33,8 +46,16 @@
         <p class="article-author"><strong>{{news.author}}</strong></p>
         <hr>
         <p id="main-text-article">{{news.text}}</p>
+<!--        <div class="fb-share-button"-->
+<!--             data-href="http://www.adastra.icu/article?id=9"-->
+<!--             data-layout="button" data-size="large"><a target="_blank"-->
+<!--             href="http://www.adastra.icu/article?id=9"-->
+<!--             class="fb-xfbml-parse-ignore">Поделиться</a>-->
+<!--        </div>-->
+<!--        <iframe id="facebook-share-button" src="" width="83" height="28"-->
+<!--                style="border:none;overflow:hidden" scrolling="no"  frameborder="0" allowTransparency="true"></iframe>-->
     </section>
     <script src="article_app.js"></script>
 </div>
-<!--</body>-->
+</body>
 <!--</html>-->

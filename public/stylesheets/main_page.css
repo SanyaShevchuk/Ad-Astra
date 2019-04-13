@@ -9,7 +9,8 @@
 }
 
 #first-news .photo .href-on-photo{
-  font-size: 20px;
+  /*font-size: 20px;*/
+  font-size: 3vw;
   opacity: .8;
   padding: 7.5px 30px;
 }
@@ -140,7 +141,7 @@
 
 .news .article-author{
   float: right;
-  font-size: 1.0vw;
+  font-size: 0.8vw;
 }
 
 .news .external-link-alt-solid{
@@ -190,7 +191,6 @@ a:hover{
   color: black;
 }
 
-
 @media screen and (max-width: 920px){
   .col-1{
     display: none;
@@ -204,21 +204,36 @@ a:hover{
     font-size: 2.6vw;
   }
 
+  #first-news .photo a, #second-news .photo a{
+    top: 0%;
+    left: 0%;
+  }
+
   .col-sm-10{
     width: 90%;
     margin-left: 5%;
+  }
+
+  .col-sm-10 .photo{
+    margin-top: 10%;
   }
 
   .col-sm-10 .photo img{
     width: 70%;
     display: block;
     margin: auto;
-    margin-top: 5%;
+    /*margin-top: 5%;*/
+  }
+
+  .photo a{
+    font-size: 3.4vw;
   }
 
   .col-sm-10 .photo a{
-    top: 5%;
+    top: 10%;
     left: 15%;
+    max-width: 70%;
+    font-size: 3vw;
   }
 
   .col-sm-10 h1{
