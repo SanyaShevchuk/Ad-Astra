@@ -7,6 +7,7 @@ var assert = require('assert');
 var url = 'mongodb://sheva:sheva@localhost:27017/adastra';
 // var url = 'mongodb://localhost:27017/adastra';
 
+
 router.get('/topic', function(req,res,next){
   mongo.connect(url, function(err, db){
     var news = [];
