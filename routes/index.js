@@ -4,8 +4,8 @@ var mongo = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
 
-// var url = 'mongodb://sheva:sheva@localhost:27017/adastra';
-var url = 'mongodb://localhost:27017/adastra';
+var url = 'mongodb://sheva:sheva@localhost:27017/adastra';
+// var url = 'mongodb://localhost:27017/adastra';
 
 
 router.get('/topic', function(req,res,next){
@@ -58,7 +58,11 @@ router.get('/contacts', function(req, res, next) {
   res.render('contacts');
 });
 
-router.get('/aboutus', function(req, res, next) {
+router.get('/statut', function(req, res, next) {
+  res.render('statut');
+});
+
+router.get('/team', function(req, res, next) {
   mongo.connect(url, function(err,db){
     let experts = [];
     let cursor = db.collection('experts').find().sort({id:1});
@@ -66,7 +70,7 @@ router.get('/aboutus', function(req, res, next) {
       experts.push(doc);
     }, function(){
       db.close();
-      res.render('aboutus', {experts:experts});
+      res.render('team', {experts:experts});
     })
   })
 });
