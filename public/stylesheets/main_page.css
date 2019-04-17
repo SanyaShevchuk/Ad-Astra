@@ -163,11 +163,16 @@
 
 .expert img{
   margin-top: -10%;
-  margin-left: 65%;
+  /*margin-left: 65%;*/
+  float: right;
   width: 30%;
   height: auto;
   border-radius: 50%;
   border: 1px solid orange;
+}
+
+.expert hr{
+  clear: both;
 }
 
 .expert h1{
@@ -200,6 +205,10 @@ a:hover{
     font-size: 2.8vw;
   }
 
+  #first-news h1, #second-news h1{
+    font-size: 3.5vw;
+  }
+
   #first-news .article-author, #second-news .article-author{
     font-size: 2.6vw;
   }
@@ -212,33 +221,39 @@ a:hover{
   .col-sm-10{
     width: 90%;
     margin-left: 5%;
-  }
-
-  .col-sm-10 .photo{
     margin-top: 10%;
+
   }
 
   .col-sm-10 .photo img{
-    width: 70%;
+    width: 65%;
     display: block;
-    margin: auto;
-    /*margin-top: 5%;*/
+    /*margin: auto;*/
+    margin-bottom: 2%;
+    margin-right: 2%;
+    float: left;
   }
 
   .photo a{
     font-size: 3.4vw;
   }
 
+  .news hr{
+    clear: both;
+  }
   .col-sm-10 .photo a{
-    top: 10%;
-    left: 15%;
+    /*top: 10%;*/
+    /*left: 15%;*/
+    top: 0;
+    left: 0;
     max-width: 70%;
-    font-size: 3vw;
+    font-size: 2.5vw;
   }
 
   .col-sm-10 h1{
     font-size: 2.4vw;
     text-align: center;
+    vertical-align: center;
   }
 
   .col-sm-10 p{
@@ -258,10 +273,11 @@ a:hover{
   }
 
   .expert blockquote{
-    font-size: 2.3vw;
+    font-size: 3vw;
   }
 
   .expert p{
-    font-size: 2vw;
+    font-size: 2.5vw;
   }
+
 }

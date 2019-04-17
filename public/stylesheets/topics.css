@@ -72,7 +72,7 @@
   width: 5%;
 }
 
-@media screen and (max-width: 960px){
+@media screen and (max-width: 920px){
 
   .news{
     margin: auto;
@@ -90,5 +90,9 @@
 
   .row #author{
     font-size: 1.9vw;
+  }
+
+  .photo a.href-on-photo{
+    top:0;
   }
 }

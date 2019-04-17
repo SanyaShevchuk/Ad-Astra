@@ -2,9 +2,10 @@ img{
   max-width: 70%;
 }
 
-#news-title {
+#news {
   background-color: rgb(249,249,249);
 }
+
 
 .news-title-photo{
   position: relative;
@@ -32,6 +33,26 @@ img{
   padding: 3px 20px;
 }
 
-.fb-share-button{
-  margin-bottom: 3%;
+@media screen and (max-width: 720px){
+
+  #news  h1{
+    font-size: 6vw;
+  }
+
+  .news-title-photo{
+    position: center;
+    margin: auto;
+    width: 100%;
+  }
+
+  .news-title-photo img{
+    width: 100%;
+    float: none;
+    margin: auto;
+  }
+
+  .news-title-photo a {
+    left: 0;
+    right: unset;
+  }
 }

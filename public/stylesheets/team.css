@@ -1,0 +1,23 @@
+#expert{
+  margin: auto;
+  text-align: center;
+}
+
+#expert-photo{
+  width: 33%;
+}
+
+#title-photo{
+  width: 70%;
+  margin: auto;
+  display: block;
+  margin-bottom: 2%;
+}
+
+#contact-title{
+  text-align: center;
+  font-size: 3vw;
+  color: darkgoldenrod;
+  margin-bottom: 5%;
+  margin-top: 2%;
+}
