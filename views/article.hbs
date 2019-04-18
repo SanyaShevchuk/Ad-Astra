@@ -7,12 +7,12 @@
     <section id="news">
         <div class="news-title-photo">
             <img src="images/articles/{{news.id}}.jpg" class="img-responsive" >
-            {{#if news.topic}}
+            {{#if news.subtopic}}
+                <a class="href-on-photo" href="article?id={{news.id}}">{{news.subtopic}}</a>
+            {{else if news.topic}}
                 <a class="href-on-photo" href="article?id={{news.id}}">{{news.topic}}</a>
             {{else if news.region}}
                 <a class="href-on-photo" href="article?id={{news.id}}">{{news.region}}</a>
-            {{else}}
-                <a class="href-on-photo" href="article?id={{news.id}}">news</a>
             {{/if}}
         </div>
         <h1>{{news.title}}</h1>
