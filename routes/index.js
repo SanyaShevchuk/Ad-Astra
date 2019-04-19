@@ -82,12 +82,11 @@ router.get('/', function(req, res, next) {
     let experts = [];
     assert.equal(null, err);
     let i=0;
-    let cursor= db.collection('article').find().sort({date:-1});
-//{expert:{$exists:false}}
+    let cursor= db.collection('article').find({expert:{$exists:false}}).sort({date:-1}).limit(8);
     cursor.forEach(function(doc, err) {
       assert.equal(null, err);
-      if(doc.expert) experts.push(doc)
-      else if(i==0) {
+      // if(doc.expert) experts.push(doc)
+      if(i==0) {
         main_news = doc;
         i++;
       }
@@ -98,8 +97,15 @@ router.get('/', function(req, res, next) {
       else other_news.push(doc);
 
     }, function() {
-      db.close();
-      res.render('index', {other_news: other_news, main_news: main_news, second_news: second_news, experts:experts});
+
+      let cursor1= db.collection('article').find({expert:{$exists:true}}).sort({date:-1}).limit(3);
+      cursor1.forEach(function(doc, err){
+        assert.equal(null, err);
+        experts.push(doc);
+      }, function () {
+        db.close();
+        res.render('index', {other_news: other_news, main_news: main_news, second_news: second_news, experts:experts});
+      })
     });
   });
 });
