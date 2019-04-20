@@ -42,15 +42,44 @@ router.get('/article', function(req, res, next) {
   mongo.connect(url, function (err, db) {
     var news;
     assert.equal(null, err);
-    var cursor = db.collection('article').findOne({'id': Number(req.query.id)})
-        .then(function(doc){
-          if(!doc){
-            throw new Error('No record found.');
-          }
-          news = doc;
-          res.render('article', {news: news});
-        });
-    db.close();
+    let cursor = db.collection('article').aggregate(
+        [
+            {$match:{id: Number(req.query.id)}},
+            {$project:
+                  { _id:0,
+                    id:1,
+                    title:1,
+                    text:1,
+                    description:1,
+                    subtopic:1,
+                    region:1,
+                    topic:1,
+                    author:1,
+                    date:
+                        {$dateToString:
+                              {format:"%d.%m.%Y", date:"$date"}
+                        }
+                  }
+            },
+            {$sort:{id:-1}}
+            ]);
+    cursor.forEach(function(doc){
+      if(!doc){
+        throw new Error('No record found.');
+      }
+      news = doc;
+      res.render('article', {news:news});
+      db.close();
+    });
+    // var cursor = db.collection('article').findOne({'id': Number(req.query.id)})
+    //     .then(function(doc){
+    //       if(!doc){
+    //         throw new Error('No record found.');
+    //       }
+    //       news = doc;
+    //       res.render('article', {news: news});
+    //     });
+    // db.close();
   })
 });
 

@@ -1,1 +1,1 @@
-$('#main-text-article').html($('#main-text-article').text());
+$('.article-text').html($('.article-text').text());

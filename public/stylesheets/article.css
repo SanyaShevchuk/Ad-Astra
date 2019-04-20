@@ -6,20 +6,25 @@ img{
   background-color: rgb(249,249,249);
 }
 
+.article-title{
+  font-size: 2.5vw;
+  margin-bottom: 2%;
+}
 
-.news-title-photo{
+.article-title-photo{
   position: relative;
   float:right;
   width: 45%;
 }
 
-.news-title-photo img{
+.article-title-photo img{
   float: right;
   width: 85%;
   max-width: 85%;
+  margin-bottom: 1%;
 }
 
-.news-title-photo a{
+.article-title-photo a{
   position: absolute;
   top: 0;
   right: 0;
@@ -33,25 +38,41 @@ img{
   padding: 3px 20px;
 }
 
+.article-author, .article-date{
+  font-weight: 600;
+  font-style: italic;
+}
+
+.article-date{
+  text-align: right;
+}
+
+hr{
+  margin: 0 0 3% 0;
+  clear: both;
+}
+
 @media screen and (max-width: 720px){
 
-  #news  h1{
-    font-size: 6vw;
+  .article-title{
+    font-size: 4.3vw;
+    font-weight: 700;
+    margin-bottom: 5%;
   }
 
-  .news-title-photo{
+  .article-title-photo{
     position: center;
     margin: auto;
     width: 100%;
   }
 
-  .news-title-photo img{
+  .article-title-photo img{
     width: 100%;
     float: none;
     margin: auto;
   }
 
-  .news-title-photo a {
+  .article-title-photo a {
     left: 0;
     right: unset;
   }

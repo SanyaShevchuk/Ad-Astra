@@ -2,28 +2,32 @@
     <link rel="stylesheet" href="/stylesheets/article.css">
 </head>
 <body>
-<div id="main">
-
-    <section id="news">
-        <div class="news-title-photo">
+    <div class="container" id="news">
+        <div class="article-title-photo">
             <img src="images/articles/{{news.id}}.jpg" class="img-responsive" >
-            {{#if news.subtopic}}
-                <a class="href-on-photo" href="article?id={{news.id}}">{{news.subtopic}}</a>
-            {{else if news.topic}}
-                <a class="href-on-photo" href="article?id={{news.id}}">{{news.topic}}</a>
-            {{else if news.region}}
-                <a class="href-on-photo" href="article?id={{news.id}}">{{news.region}}</a>
-            {{/if}}
+                {{#if news.subtopic}}
+                    <a class="href-on-photo" href="article?id={{news.id}}">{{news.subtopic}}</a>
+                    {{else if news.topic}}
+                    <a class="href-on-photo" href="article?id={{news.id}}">{{news.topic}}</a>
+                    {{else if news.region}}
+                    <a class="href-on-photo" href="article?id={{news.id}}">{{news.region}}</a>
+                    {{/if}}
         </div>
-        <h1>{{news.title}}</h1>
+        <h1 class="article-title">{{news.title}}</h1>
         <p>
             {{news.description}}
         </p>
-        <p class="article-author"><strong>{{news.author}}</strong></p>
-<!--        <p class="article-date"><strong>{{news.date}}</strong></p>-->
+
+        <div class="row">
+            <div class="col-sm-9">
+                <p class="article-author">{{news.author}}</p>
+            </div>
+            <div class="col-sm-3">
+                <p class="article-date">{{news.date}}</p>
+            </div>
+        </div>
         <hr>
-        <p id="main-text-article">{{news.text}}</p>
-    </section>
+        <p class="article-text">{{news.text}}</p>
+    </div>
     <script src="article_app.js"></script>
-</div>
 </body>
