@@ -6,6 +6,17 @@ img{
   background-color: rgb(249,249,249);
 }
 
+.article-text a{
+  opacity: 0.5;
+  color: orange;
+  text-transform: none;
+  text-decoration: underline;
+}
+
+.article-text a: hover{
+  opacity: 1;
+}
+
 .article-title{
   font-size: 2.5vw;
   margin-bottom: 2%;
