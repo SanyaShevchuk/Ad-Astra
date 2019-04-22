@@ -1,0 +1,19 @@
+server {
+  listen     *:80;
+  server_name  adastra.icu www.adastra.icu;
+  proxy_set_header Host adastra.icu;
+  location / {
+    rewrite ^(.*)$ https://adastra.icu$1 permanent;
+  }
+}
+
+server{
+  listen *:443 ssl;
+  server_name adastra.icu www.adastra.icu;
+  ssl_certificate /root/Ad-Astra/ssl/publickey.cer;
+  ssl_certificate_key /root/Ad-Astra/ssl/privatekey.pem;
+  proxy_set_header Host adastra.icu;
+  location / {
+        proxy_pass http://127.0.0.1:3000;
+  }
+}

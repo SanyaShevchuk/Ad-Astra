@@ -12,7 +12,7 @@ router.get('/topic', function(req,res,next){
   mongo.connect(url, function(err, db){
     var news = [];
     assert.equal(null, err);
-    var cursor = db.collection('article').find({'topic':req.query.name});
+    var cursor = db.collection('article').find({'topic':req.query.name}).sort({date:-1});
     cursor.forEach(function(doc, err){
       assert.equal(null, err);
       news.push(doc);
@@ -27,7 +27,7 @@ router.get('/region', function(req,res,next){
   mongo.connect(url, function(err, db){
     var news = [];
     assert.equal(null, err);
-    var cursor = db.collection('article').find({'region':req.query.name});
+    var cursor = db.collection('article').find({'region':req.query.name}).sort({date:-1});
     cursor.forEach(function(doc, err){
       assert.equal(null, err);
       news.push(doc);
