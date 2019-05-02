@@ -46,23 +46,24 @@
             <div class="row">
                 {{# each other_news}}
                 <div class="col-lg-3 col-sm-10 news">
-<!--                    <a href="article?id={{this.id}}">-->
+                    <a href="article?id={{this.id}}" target="_blank">
                     <div class="photo">
                         <img src="/images/articles/{{this.id}}.jpg" alt="" class="img-responsive">
                         {{#if this.subtopic}}
-                            <a class="href-on-photo" href="article?id={{this.id}}">{{this.subtopic}}</a>
+                            <span class="href-on-photo">{{this.subtopic}}</span>
                         {{else}}
-                            <a class="href-on-photo" href="article?id={{this.id}}">news</a>
+                            <span class="href-on-photo">news</span>
                         {{/if}}
                     </div>
+
                     <h3>{{this.title}}</h3>
                     <hr>
-                    <a href="article?id={{this.id}}">
-                    <img src="/images/label/external-link-alt-solid.svg" id="external-link"
-                         class="external-link-alt-solid text-right">
-                    <p>{{this.description}}</p>
+                        <img src="/images/label/external-link-alt-solid.svg" id="external-link"
+                             class="external-link-alt-solid text-right"/>
+                        <p class="article-description">{{this.description}}</p>
+
+                        <p class="article-author font-italic" >{{this.author}}</p>
                     </a>
-                    <p class="article-author font-italic" >{{this.author}}</p>
                 </div>
 
                     <div class="col-1"></div>
@@ -74,7 +75,7 @@
     </section>
 
     <section id="expert-section">
-        <div class="section-title">
+        <div class="expert-section-title">
             <hr>
             <p>Думка експерта</p>
         </div>
@@ -85,7 +86,6 @@
                 <div class="col-lg-3 col-sm-10 expert">
                     <img src="/images/experts/{{this.expert}}.jpg" alt="">
                     <blockquote class="font-italic">{{this.author}}</blockquote>
-<!--                    <blockquote class="font-italic text-right">Quote</blockquote>-->
                     <hr>
                     <a href="article?id={{this.id}}">
                         <p>{{this.title}}</p>
@@ -94,7 +94,6 @@
                 <div class="col-lg-1 col-sm-0"></div>
                 {{/each}}
             </div>
-            <!-- col-xs-12 col-sm-6 col-md-4 col-lg-3 -->
         </div>
     </section>
 </div>

@@ -55,6 +55,7 @@ router.get('/article', function(req, res, next) {
                     region:1,
                     topic:1,
                     author:1,
+                    photoresource:1,
                     date:
                         {$dateToString:
                               {format:"%d.%m.%Y", date:"$date"}
@@ -81,6 +82,10 @@ router.get('/article', function(req, res, next) {
     //     });
     // db.close();
   })
+});
+
+router.get('/spec-project', function(req, res, next) {
+  res.render('specproject');
 });
 
 router.get('/contacts', function(req, res, next) {
