@@ -1,7 +1,16 @@
 <head>
     <link rel="stylesheet" href="/stylesheets/article.css">
+    <meta name="robots" content="noindex,nofollow">
+    <meta property="og:url"           content="https://adastra.icu/article?id={{news.id}}" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="Ad Astra" />
+    <meta property="og:description"   content="Adastra" />
+    <meta property="og:image"         content="https://adastra.icu/images/articles/{{news.id}}.jpg" />
 </head>
 <body>
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/uk_UA/sdk.js#xfbml=1&version=v3.3&appId=215299406056993&autoLogAppEvents=1"></script>
     <div class="container" id="news">
         <div class="article-title-photo">
             <img src="images/articles/{{news.id}}.jpg" class="img-responsive" >
@@ -27,6 +36,7 @@
                 <p class="article-date">{{news.date}}</p>
             </div>
         </div>
+        <div id="facebook" class="fb-share-button" data-href="https://adastra.icu/article?id={{news.id}}" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fadastra.icu%2Farticle%3Fid%3D{{news.id}}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Поделиться</a></div>
         <hr>
         <p class="article-text">{{news.text}}</p>
     </div>

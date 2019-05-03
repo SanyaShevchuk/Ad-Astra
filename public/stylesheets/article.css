@@ -83,6 +83,11 @@ hr{
   clear: both;
 }
 
+#facebook{
+  float: right;
+  margin-bottom: 1%;
+}
+
 @media screen and (max-width: 720px){
 
   .article-title{
