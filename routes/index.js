@@ -4,8 +4,8 @@ var mongo = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
 
-var url = 'mongodb://sheva:sheva@localhost:27017/adastra';
-// var url = 'mongodb://localhost:27017/adastra';
+// var url = 'mongodb://sheva:sheva@localhost:27017/adastra';
+var url = 'mongodb://localhost:27017/adastra';
 
 
 router.get('/topic', function(req,res,next){
@@ -138,7 +138,7 @@ router.get('/', function(req, res, next) {
         experts.push(doc);
       }, function () {
         db.close();
-        res.render('index', {other_news: other_news, main_news: main_news, second_news: second_news, experts:experts});
+        res.render('layout.hbs', {other_news: other_news, main_news: main_news, second_news: second_news, experts:experts});
       })
     });
   });
