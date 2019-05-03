@@ -7,9 +7,9 @@
                                 <div class="photo">
                                     <img src="/images/articles/{{main_news.id}}.jpg" class="img-responsive">
                                     {{#if main_news.subtopic}}
-                                        <a class="href-on-photo" href="article?id={{main_news.id}}">{{main_news.subtopic}}</a>
+                                        <span class="href-on-photo">{{main_news.subtopic}}</span>
                                     {{else}}
-                                        <a class="href-on-photo" href="article?id={{main_news.id}}">останні</a>
+                                        <span class="href-on-photo">останні</span>
                                     {{/if}}
                                 </div>
                                 <h2 class="mark">{{main_news.title}}</h2>
@@ -25,9 +25,9 @@
                         <div class="photo">
                             <img src="/images/articles/{{second_news.id}}.jpg" class="img-responsive">
                             {{#if second_news.subtopic}}
-                                <a class="href-on-photo" href="article?id={{second_news.id}}">{{second_news.subtopic}}</a>
+                                <span class="href-on-photo">{{second_news.subtopic}}</span>
                             {{else}}
-                                <a class="href-on-photo" href="article?id={{second_news.id}}">news</a>
+                                <span class="href-on-photo">news</span>
                             {{/if}}
                         </div>
                         <h2 class="mark">{{second_news.title}}</h2>

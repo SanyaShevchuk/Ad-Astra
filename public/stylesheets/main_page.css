@@ -38,6 +38,7 @@
   font-size: 16px;
   opacity: .8;
   padding: 3px 20px;
+  max-width: 65%;
 }
 
 #second-news .photo .href-on-photo{
@@ -261,6 +262,10 @@ a:hover{
     clear: both;
   }
 
+  .news .photo .href-on-photo{
+    font-size: 2.2vw;
+  }
+
   .news .article-description{
     font-size: 2.4vw;
   }
@@ -310,4 +315,13 @@ a:hover{
     font-size: 2.5vw;
   }
 
+  #news-section .href-on-photo{
+    top: 5px;
+  }
+}
+
+@media screen and (max-width: 600px){
+  #news-section .href-on-photo{
+    top: 3px;
+  }
 }
