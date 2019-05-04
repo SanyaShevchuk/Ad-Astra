@@ -220,6 +220,12 @@ footer a:hover{
     text-decoration: underline;
 }
 
+footer .social-media img{
+    width: 2.5%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+}
+
 @keyframes menuFadeIn {
   from{
     display: none;
@@ -262,7 +268,7 @@ footer a:hover{
     margin-bottom: 15%;
   }
 
-  .social-media img{
+  #menu .social-media img{
     width: 25%;
     display: block;
     margin-bottom: 20%;
@@ -281,6 +287,11 @@ footer a:hover{
 
     footer div{
         font-size: 1.9vw;
+    }
+
+    footer .social-media img{
+        width: 6%;
+        margin-right: 3%;
     }
 }
 
@@ -313,5 +324,10 @@ footer a:hover{
 
     footer div{
         font-size: 2.1vw;
+    }
+
+    footer .social-media img{
+        width: 8%;
+        margin-right: 4%;
     }
 }
