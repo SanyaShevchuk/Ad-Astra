@@ -29,13 +29,13 @@ img{
 .article-title-photo{
   position: relative;
   float:right;
-  width: 45%;
+  width: 46%;
 }
 
 .article-title-photo img{
   float: right;
-  width: 85%;
-  max-width: 85%;
+  width: 100%;
+  max-width: 100%;
   margin-bottom: 1%;
 }
 
