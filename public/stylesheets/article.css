@@ -100,12 +100,14 @@ hr{
     position: center;
     margin: auto;
     width: 100%;
+    padding-left: 0;
   }
 
   .article-title-photo img{
     width: 100%;
-    float: none;
+    float: left;
     margin: auto;
+    padding-left: 0;
   }
 
   .article-title-photo a {
