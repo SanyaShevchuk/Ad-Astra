@@ -24,7 +24,9 @@
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="{{news.title}}" />
     <meta property="og:description"   content="{{news.description}}" />
-    <meta property="og:image"         content="https://adastra.icu/images/articles/{{news.id}}.jpg" >
+    {{#if news.id}} <meta property="og:image"         content="https://adastra.icu/images/articles/{{news.id}}.jpg" >
+        {{else}} <meta property="og:image"         content="https://adastra.icu/images/label/logo.png" >
+    {{/if}}
     <meta property="fb:app_id"        content="401838233732722"/>
 
 </head>
