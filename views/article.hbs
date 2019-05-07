@@ -18,8 +18,8 @@
                     {{/if}}
             <span class="article-title-photo-resource">Фото: {{news.photoresource}}</span>
         </div>
-        <h1 class="article-title">{{news.title}}</h1>
-        <p>
+        <h1 class="article-title">{{{news.title}}}</h1>
+        <p class="article-description">
             {{news.description}}
         </p>
 
@@ -33,7 +33,7 @@
         </div>
         <div id="facebook" class="fb-share-button" data-href="https://adastra.icu/article?id={{news.id}}" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fadastra.icu%2Farticle%3Fid%3D{{news.id}}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Поделиться</a></div>
         <hr>
-        <p class="article-text">{{news.text}}</p>
+        <p class="article-text">{{{news.text}}}</p>
     </div>
-    <script src="article_app.js"></script>
+    
 </body>
