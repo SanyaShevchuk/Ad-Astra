@@ -1,7 +1,44 @@
 <link rel="stylesheet" href="/stylesheets/specproject.css">
+<link rel="stylesheet" href="/stylesheets/topics.css">
 <div id="main">
-    <h1 id="spec-project-title"></h1>
-    <section>
+    {{#if news}}
+        <div id="topic-title">
+            <img src="/images/articles/{{news.0.specproject}}.jpg" id="topic-title-pic" alt="">
+            <span>Один пояс, один шлях</span>
+        </div>
+        <section id="news-section">
+            <div class="container">
+                <div class="row">
+                    {{# each news}}
+                        <div class="col-sm-10 col-lg-5 news">
+                            <a href="project?id={{this.id}}">
+                            <div class="photo">
+                                <img src="/images/articles/obor{{this.id}}.jpg" alt="" class="img-responsive">
+                                {{#if this.subtopic}}
+                                    <span class="href-on-photo">{{this.subtopic}}</span>
+                                {{else}}
+                                    <span class="href-on-photo">останні</span>
+                                {{/if}}
+                            </div>
+                            <h1>{{this.title}}</h1>
+                            <hr>
+                            <img src="/images/label/external-link-alt-solid.svg" id="external-link"
+                                 class="external-link-alt-solid text-right">
+                            <p>{{this.description}}</p>
+                            <p class="article-author font-italic" >{{this.author}}</p>
+                            </a>
+                        </div>
+                    {{/each}}
+                </div>
 
-    </section>
+            </div>
+        </section>
+    {{else}}
+        <br>
+        <br>
+        <h1>На даний момент ми не маємо статей в цьому спецпроекті</h1>
+        <br>
+        <p>Але вони обов'язково з'являться.</p>
+        <span style="float: right">З повагою <i>Аналітичний центр Ad Astra</i></span>
+    {{/if}}
 </div>

@@ -2,7 +2,20 @@
     <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-sm-10">
-                        <a href="article?id={{main_news.id}}">
+                        {{#if main_news.specproject}}
+                            <a href="spec-project?name={{main_news.id}}">
+                            <section id = "first-news">
+                                <div class="photo">
+                                    <img src="/images/articles/{{main_news.id}}.jpg" class="img-responsive">
+                                    <span class="href-on-photo">спецпроект</span>
+                                </div>
+                                <h2 class="mark">{{{main_news.title}}}</h2>
+                                <p>{{main_news.description}}</p>
+                                <p class="article-author">{{main_news.author}}</p>
+                            </section>
+                            </a>
+                        {{else}}
+                            <a href="article?id={{main_news.id}}">
                             <section id = "first-news">
                                 <div class="photo">
                                     <img src="/images/articles/{{main_news.id}}.jpg" class="img-responsive">
@@ -16,7 +29,9 @@
                                 <p>{{main_news.description}}</p>
                                 <p class="article-author">{{main_news.author}}</p>
                             </section>
-                        </a>
+                            </a>
+                        {{/if}}
+
             </div>
             <div class="col-lg-4 col-sm-10">
                 <a href="article?id={{second_news.id}}">

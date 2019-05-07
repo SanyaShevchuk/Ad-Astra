@@ -26,11 +26,11 @@ font-style: normal;
 
 body{
   margin: 0 10%;
-  background-color: rgba(216,219,219,0.3);
+  background-color: white;
 }
 
 #menu{
-    background: whitesmoke;
+    background: white;
     margin-bottom: 1%;
 }
 
@@ -38,6 +38,7 @@ nav{
   margin-top: 0;
   margin-bottom: 2%;
 }
+
 
 .navbar{
   padding-left: 0;
@@ -128,7 +129,7 @@ nav{
   position: absolute;
   top:30%;
   font-size: 2.4vw;
-  font-family:  'Larsseit', 'Arial', serif;
+  font-family:  'Haarlemmer W04', 'Georgia', serif;
 }
 
 .burger{

@@ -29,10 +29,12 @@
     <html prefix="og: https://adastra.icu/"/>
 
     <meta name="robots" content="noindex,nofollow">
-    {{#if news.id}}
-        <meta property="og:url"           content="https://adastra.icu/article?id={{news.id}}" >
+    {{#if news.specproject}}
+            <meta property="og:url"           content="https://adastra.icu/project?id={{news.id}}" >
+    {{else if news.id}}
+            <meta property="og:url"           content="https://adastra.icu/article?id={{news.id}}" >
     {{else}}
-        <meta property="og:url"           content="https://adastra.icu/" >
+            <meta property="og:url"           content="https://adastra.icu/" >
     {{/if}}
     {{#if news.id}}
         <meta property="og:type"          content="article" />
@@ -50,7 +52,11 @@
         <meta property="og:description"   content="Ми публікуваємо фахові статті з міжнародної політики за регіонально-тематичною класифікацією." />
     {{/if}}
     {{#if news.id}}
-           <meta property="og:image"         content="https://adastra.icu/images/articles/{{news.id}}.jpg" >
+        {{#if news.specproject}}
+            <meta property="og:image"         content="https://adastra.icu/images/articles/obor{{news.id}}.jpg" >
+        {{else}}
+            <meta property="og:image"         content="https://adastra.icu/images/articles/{{news.id}}.jpg" >
+        {{/if}}
     {{else}}
            <meta property="og:image"         content="https://adastra.icu/images/label/logo.jpg" >
     {{/if}}

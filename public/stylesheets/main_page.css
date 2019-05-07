@@ -16,7 +16,8 @@
 }
 
 #second-news{
-  background-color: rgb(240,244,244);
+  /*background-color: rgb(240,244,244);*/
+  background-color: white;
 }
 
 #second-news .photo .href-on-photo{
@@ -47,7 +48,8 @@
 }
 
 .news{
-  background-color: rgb(240,244,244);
+  /*background-color: rgb(240,244,244);*/
+  background-color: white;
 }
 
 #first-news h2, #second-news h2{
@@ -84,6 +86,10 @@
 #second-news .article-author{
   font-style: italic;
   font-size: 0.9vw;
+}
+
+.news p.article-description, #second-news h2.mark+p, #first-news h2.mark+p{
+  text-align: justify;
 }
 
 .container{
@@ -189,7 +195,7 @@
   width: 30%;
   height: auto;
   border-radius: 50%;
-  border: 1px solid orange;
+  border: 1px solid rgb(0, 0, 255);
 }
 
 .expert hr{

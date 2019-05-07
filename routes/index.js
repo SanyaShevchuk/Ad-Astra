@@ -4,8 +4,8 @@ var mongo = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
 
- var url = 'mongodb://sheva:sheva@localhost:27017/adastra';
-//var url = 'mongodb://localhost:27017/adastra';
+ // var url = 'mongodb://sheva:sheva@localhost:27017/adastra';
+var url = 'mongodb://localhost:27017/adastra';
 
 
 router.get('/topic', function(req,res,next){
@@ -85,7 +85,54 @@ router.get('/article', function(req, res, next) {
 });
 
 router.get('/spec-project', function(req, res, next) {
-  res.render('specproject');
+  mongo.connect(url, function(err, db){
+    var news = [];
+    assert.equal(null, err);
+    var cursor = db.collection('specprojects').find({'specproject':req.query.name}).sort({date:-1});
+    cursor.forEach(function(doc, err){
+      assert.equal(null, err);
+      news.push(doc);
+    }, function(){
+      db.close();
+      res.render('specproject', {news:news});
+    })
+  })
+});
+
+router.get('/project', function(req, res, next) {
+  mongo.connect(url, function (err, db) {
+    var news;
+    assert.equal(null, err);
+    let cursor = db.collection('specprojects').aggregate(
+        [
+          {$match:{id: Number(req.query.id)}},
+          {$project:
+                { _id:0,
+                  id:1,
+                  title:1,
+                  text:1,
+                  description:1,
+                  subtopic:1,
+                  author:1,
+                  specproject:1,
+                  photoresource:1,
+                  date:
+                      {$dateToString:
+                            {format:"%d.%m.%Y", date:"$date"}
+                      }
+                }
+          },
+          {$sort:{id:-1}}
+        ]);
+    cursor.forEach(function(doc){
+      if(!doc){
+        throw new Error('No record found.');
+      }
+      news = doc;
+      res.render('project', {news:news});
+      db.close();
+    });
+  })
 });
 
 router.get('/contacts', function(req, res, next) {
