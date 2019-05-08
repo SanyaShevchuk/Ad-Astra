@@ -4,8 +4,8 @@ var mongo = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
 
- // var url = 'mongodb://sheva:sheva@localhost:27017/adastra';
-var url = 'mongodb://localhost:27017/adastra';
+ var url = 'mongodb://sheva:sheva@localhost:27017/adastra';
+// var url = 'mongodb://localhost:27017/adastra';
 
 
 router.get('/topic', function(req,res,next){
@@ -191,23 +191,70 @@ router.get('/', function(req, res, next) {
   });
 });
 
-// router.post('/insert', function(req, res, next) {
-//   var item = {
-//     title: req.body.title,
-//     content: req.body.content,
-//     author: req.body.author
-//   };
-//
-//   mongo.connect(url, function(err, db) {
-//     assert.equal(null, err);
-//     db.collection('user-data').insertOne(item, function(err, result) {
-//       assert.equal(null, err);
-//       console.log('Item inserted');
-//       db.close();
-//     });
-//   });
-//
-//   res.redirect('/');
-// });
+router.get('/admin', function(req, res, next){
+    res.render('admin/admin');
+})
+
+router.post('/insert', function(req, res, next) {
+    let collection;
+    var item;
+    if(req.body.name){
+      item = {
+          id: parseFloat(req.body.id),
+          name: req.body.name,
+          description: req.body.description
+      };
+      collection = "experts";
+    } else if(req.body.region || req.body.topic){
+        item = {
+            id: parseFloat(req.body.id),
+            title: req.body.title,
+            description: req.body.description,
+            text: req.body.text,
+            author: req.body.author,
+            topic: req.body.topic,
+            subtopic: req.body.subtopic,
+            date: new Date(req.body.date),
+            photoresource: req.body.photoresource,
+            region: req.body.region
+        };
+        collection = "article";
+    } else if(req.body.text){
+        item = {
+            id: parseFloat(req.body.id),
+            title: req.body.title,
+            description: req.body.description,
+            author: req.body.author,
+            subtopic: req.body.subtopic,
+            date: new Date(req.body.date),
+            photoresource: req.body.photoresource,
+            text: req.body.text,
+            specproject: req.body.specproject
+        };
+        collection = "specprojects";
+    } else{
+        item = {
+            id: req.body.id,
+            title: req.body.title,
+            description: req.body.description,
+            author: req.body.author,
+            subtopic: req.body.subtopic,
+            date : new Date(req.body.date),
+            photoresource: req.body.photoresource,
+            specproject: req.body.specproject
+        };
+        collection = "article";
+    }
+
+  mongo.connect(url, function(err, db) {
+    assert.equal(null, err);
+    db.collection(collection).insertOne(item, function(err, result) {
+      assert.equal(null, err);
+      db.close();
+    });
+  });
+
+  res.redirect('/admin');
+});
 
 module.exports = router;

@@ -25,13 +25,17 @@ font-style: normal;
 }
 
 body{
-  margin: 0 10%;
+  margin: 0 0 0 5%;
   background-color: white;
 }
 
 #menu{
     background: white;
     margin-bottom: 1%;
+}
+
+#admin-menu{
+    display: none;
 }
 
 nav{
@@ -188,10 +192,10 @@ footer#footer{
     margin-top: 5%;
     padding-top: 3%;
     position: relative;
-    left: -13%;
-    width: 125.54%;
-    /*left: -10%;*/
-    /*width: 120%;*/
+    /*left: -13%;*/
+    /*width: 125.54%;*/
+    left: -5.3%;
+    width: 105.3%;
     background-color: black;
     color: white;
 }
