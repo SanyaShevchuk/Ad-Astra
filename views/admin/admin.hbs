@@ -133,11 +133,19 @@
                     <section class="delete">
                         <h3>Delete Data</h3>
                         <form action="/delete" method="post">
+                            <label for="delelem">Choose:</label>
+                            <select name="delelem" id="delelem" class="form-control">
+                                <option value="" selected disabled hidden>Choose here</option>
+                                <option value="article">article</option>
+                                <option value="specprojects">spec-project article</option>
+                                <option value="article-topic">spec-project topic</option>
+                                <option value="experts">expert</option>
+                            </select>
                             <div class="input">
                                 <label for="id">ID</label>
-                                <input type="text" id="id" name="id">
+                                <input type="text" id="deleteId" name="id">
                             </div>
-                            <button type="submit">DELETE</button>
+                            <button type="submit" id="deleteBtn">DELETE</button>
                         </form>
                     </section>
                 </div>

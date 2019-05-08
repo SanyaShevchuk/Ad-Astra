@@ -14,6 +14,8 @@ function validate(){
     link.setAttribute('type', 'text/css');
     link.setAttribute('href', '/stylesheets/admin/admin-menu.css');
     document.getElementsByTagName('head')[0].appendChild(link);
+  } else{
+    alert("Wrong password or login!");
   }
 }
 
@@ -92,6 +94,14 @@ $('#getId').on('change',function(e) {
 
 $('#getId').on('input',function(e) {
   $('#getDataA').show();
+})
+
+$('#delelem').change(function(){
+  $('#deleteId').show();
+});
+
+$('#deleteId').on('input', function(){
+  $('#deleteBtn').show();
 })
 
 

@@ -78,10 +78,10 @@ button:hover {
   border: 1px solid black;
 }
 
-.input{
+.insert .input{
   display: none;
 }
 
-#getDataA, #getId{
+#getDataA, #getId, #deleteId, #deleteBtn{
   display: none;
 }
