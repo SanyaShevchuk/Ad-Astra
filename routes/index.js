@@ -4,8 +4,8 @@ var mongo = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
 
- var url = 'mongodb://sheva:sheva@localhost:27017/adastra';
-// var url = 'mongodb://localhost:27017/adastra';
+ // var url = 'mongodb://sheva:sheva@localhost:27017/adastra';
+var url = 'mongodb://localhost:27017/adastra';
 
 
 router.get('/topic', function(req,res,next){
@@ -256,5 +256,22 @@ router.post('/insert', function(req, res, next) {
 
   res.redirect('/admin');
 });
+
+// router.get('/get-data', function(req, res, next){
+//     console.log(req);
+//     let cursor;
+//
+//     let item = {id:req.body.getId};
+//     console.log("ID:" + item.id);
+//
+//     // let collection = req.body.;
+//     // console.log("collection" + collection);
+//     mongo.connect(url, function(err, db) {
+//         assert.equal(null, err);
+//         cursor = db.collection('article').find({id:item.id});
+//         db.close();
+//         res.redirect('admin', {items: cursor});
+//     });
+// })
 
 module.exports = router;

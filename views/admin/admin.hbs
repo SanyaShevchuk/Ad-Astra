@@ -90,16 +90,16 @@
                 <div class="col-sm-6">
                     <section class="get">
                         <h3>Get Data</h3>
-                        <a href="/get-data">LOAD DATA</a>
                         <div>
-                            {{# each items }}
-                                <article class="item">
-                                    <div>Title: {{ this.title }}</div>
-                                    <div>Content: {{ this.content }}</div>
-                                    <div>Author: {{ this.author }}</div>
-                                    <div>ID: {{ this._id }}</div>
-                                </article>
-                            {{/each}}
+                            <label for="get-elem">Choose:</label>
+                            <select name="get-elem" id="get-elem" class="form-control">
+                                <option value="" selected disabled hidden>Choose here</option>
+                                <option value="usual-article">article</option>
+                                <option value="spec-project-article">spec-project article</option>
+                            </select>
+                            <label for="getId">ID:</label>
+                            <input type="text" id="getId" name="getId">
+                            <a id="getDataA" href="/">Go to article</a>
                         </div>
                     </section>
                 </div>

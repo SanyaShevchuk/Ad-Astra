@@ -77,5 +77,23 @@ function chooseTypeOfElement(){
   }
 }
 
+$('#get-elem').change(function(){
+  if($('#get-elem').val()==='usual-article')
+    $('#getDataA').attr('href', '/article?id=');
+  else if($('#get-elem').val()==='spec-project-article')
+    $('#getDataA').attr('href', '/project?id=');
+
+  $('#getId').show();
+})
+
+$('#getId').on('change',function(e) {
+  $('#getDataA').attr('href', $('#getDataA').attr('href')+$('#getId').val());
+});
+
+$('#getId').on('input',function(e) {
+  $('#getDataA').show();
+})
+
+
 selectTypeOfElem.change(chooseTypeOfElement);
 submit_btn.click(validate);
