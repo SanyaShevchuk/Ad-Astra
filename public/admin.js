@@ -85,6 +85,7 @@ $('#get-elem').change(function(){
   else if($('#get-elem').val()==='spec-project-article')
     $('#getDataA').attr('href', '/project?id=');
 
+  $('.get label[for="getId"]').show();
   $('#getId').show();
 })
 
@@ -97,6 +98,7 @@ $('#getId').on('input',function(e) {
 })
 
 $('#delelem').change(function(){
+  $('.delete label[for="id"]').show();
   $('#deleteId').show();
 });
 
@@ -104,6 +106,60 @@ $('#deleteId').on('input', function(){
   $('#deleteBtn').show();
 })
 
+$('#update-type').change(function(){
+  $('#updateId').show();
+  $('.update label[for="id"]').show();
+  $('.update .input+label').show();
+
+  let itemType = $('#update-type').val();
+  $('#update-id').show();
+  $('#update-description').show();
+  if(itemType ==='experts'){
+    $('#update-name').show();
+
+    $('#update-title').hide();
+    $('#update-author').hide();
+    $('#update-text').hide();
+    $('#update-date').hide();
+    $('#update-photoresource').hide();
+    $('#update-subtopic').hide();
+    $('#update-topic').hide();
+    $('#update-region').hide();
+    $('#update-specproject').hide();
+  } else {
+    $('#update-title').show();
+    $('#update-author').show();
+    $('#update-text').show();
+    $('#update-date').show();
+    $('#update-photoresource').show();
+    $('#update-subtopic').show();
+
+    $('#update-name').hide();
+    if (itemType ==='article') {
+      $('#update-topic').show();
+      $('#update-region').show();
+      $('#update-specproject').hide();
+    } else {
+      $('#update-specproject').show();
+      $('#update-topic').hide();
+      $('#update-region').hide();
+    }
+  }
+});
+
+
+$('.update input:checkbox').change(
+    function(){
+      if ($(this).is(':checked')) {
+        $(this).parent().append("<input type='text' name="+$(this).attr('id')+" />");
+      } else{
+        $(this).parent().children().last().remove();
+      }
+    });
+
+$('#updateId').on('input', function(){
+  $('.update button[type="submit"]').show();
+})
 
 selectTypeOfElem.change(chooseTypeOfElement);
 submit_btn.click(validate);

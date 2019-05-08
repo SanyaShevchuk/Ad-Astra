@@ -271,11 +271,80 @@ router.post('/delete', function (req, res, next) {
         assert.equal(null, err);
         db.collection(collection).deleteOne({id: id}, function(err, result) {
             assert.equal(null, err);
-            console.log("Object deleted");
+            console.log("Object is deleted");
             db.close();
         });
     });
     res.redirect('/admin');
+});
+
+/**
+ * req.body.? - whatevs element in the form, which sent request
+ * ? - name tag of element
+ * */
+router.post('/update', function(req, res, next){
+
+    let collection;
+    let id;
+    let item ={};
+
+    if(req.body['update-type']==='article-topic'){
+        collection = 'article';
+        id = req.body.id;
+    } else {
+        collection = req.body['update-type'];
+        id = parseFloat(req.body.id);
+    }
+
+    if(req.body.id){
+        if(req.body['update-type']==='article-topic')
+            item.id = req.body.id;
+        else item.id = parseFloat(req.body.id);
+    }
+    if(req.body.title){
+        item.title = req.body.title;
+    }
+    if(req.body.description){
+        item.description = req.body.description;
+    }
+    if(req.body.author){
+        item.author = req.body.author;
+    }
+    if(req.body['id-author']){
+        item.id_author = req.body['id-author'];
+    }
+    if(req.body.date){
+        item.date = req.body.date;
+    }
+    if(req.body.topic){
+        item.topic = req.body.topic;
+    }
+    if(req.body.region){
+        item.region = req.body.region
+    }
+    if(req.body.specproject){
+        item.specproject = req.body.specproject;
+    }
+    if(req.body.subtopic){
+        item.subtopic = req.body.subtopic;
+    }
+    if(req.body.photoresource){
+        item.photoresource = req.body.photoresource;
+    }
+    if(req.body.text){
+        item.text = req.body.text;
+    }
+
+   mongo.connect(url, function(err, db){
+       assert.equal(null, err);
+       db.collection(collection).updateOne({id: id}, {$set:item}, function(err, result){
+           assert.equal(null, err);
+           console.log("Object is updated");
+           db.close();
+       })
+   });
+
+   res.redirect('/admin');
 });
 
 module.exports = router;

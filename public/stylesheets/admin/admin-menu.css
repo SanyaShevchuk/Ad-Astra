@@ -82,6 +82,7 @@ button:hover {
   display: none;
 }
 
-#getDataA, #getId, #deleteId, #deleteBtn{
+#getDataA, #getId, #deleteId, #deleteBtn, .get label[for="getId"], .delete label[for="id"],
+#updateId, .update label[for="id"], .form-check, .update .input+label, .update button[type="submit"]{
   display: none;
 }
