@@ -7,7 +7,7 @@
 
         <div class="container">
             <label for="uname"><b>Admin</b></label>
-            <input type="text" placeholder="Enter Username" name="uname" required>
+            <input type="text" placeholder="Enter Admin name" name="uname" required>
 
             <label for="psw"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="psw" required>
@@ -23,65 +23,66 @@
                     <section class="insert">
                         <h3>Insert Data</h3>
                         <form action="/insert" method="post">
-                            <label for="insert-type-of-elem">Choose type of item you want to insert:</label>
-                            <select id="insert-type-of-elem" class="form-control">
+                            <label for="insert-elem">Choose type of item you want to insert:</label>
+                            <select id="insert-elem" class="form-control">
                                 <option value="" selected disabled hidden>Choose here</option>
                                 <option value="usual-article">usual article</option>
+                                <option value="expert-article">expert article</option>
                                 <option value="spec-project-article">spec-project article</option>
                                 <option value="spec-project-topic">spec-project topic</option>
-                                <option value="expert-information">expert information</option>
+                                <option value="experts">expert information</option>
                             </select>
-                            <div class="input" id="input-id">
+                            <div class="input" id="insert-id">
                                 <label for="id">id</label>
-                                <input type="text" id="id" name="id">
+                                <input type="text" id="id" name="id" placeholder="id of article or expert" required>
                             </div>
-                            <div class="input" id="input-name">
+                            <div class="input" id="insert-name">
                                 <label for="name">name</label>
-                                <input type="text" id="name" name="name">
+                                <input type="text" id="name" name="name" placeholder="name of adastra-expert">
                             </div>
-                            <div class="input" id="input-title">
+                            <div class="input" id="insert-title">
                                 <label for="title">title</label>
-                                <input type="text" id="title" name="title">
+                                <input type="text" id="title" name="title" placeholder="title of article">
                             </div>
-                            <div class="input" id="input-description">
+                            <div class="input" id="insert-description">
                                 <label for="description">description</label>
-                                <input type="text" id="description" name="description">
+                                <input type="text" id="description" name="description" placeholder="description of article" required>
                             </div>
-                            <div class="input" id="input-author">
+                            <div class="input" id="insert-author">
                                 <label for="author">author</label>
-                                <input type="text" id="author" name="author">
+                                <input type="text" id="author" name="author" placeholder="author of article">
                             </div>
-                            <div class="input" id="input-text">
+                            <div class="input" id="insert-text">
                                 <label for="text">text</label>
-                                <input type="text" id="text" name="text">
+                                <input type="text" id="text" name="text" placeholder="whole text of article">
                             </div>
-                            <div class="input" id="input-date">
+                            <div class="input" id="insert-date">
                                 <label for="date">date</label>
                                 <input type="text" id="date" name="date" placeholder="May 12, 2019">
                             </div>
-                            <div class="input" id="input-topic">
+                            <div class="input" id="insert-topic">
                                 <label for="topic">topic</label>
-                                <input type="text" id="topic" name="topic">
+                                <input type="text" id="topic" name="topic" placeholder="article belong to which topic">
                             </div>
-                            <div class="input" id="input-subtopic">
+                            <div class="input" id="insert-subtopic">
                                 <label for="subtopic">subtopic</label>
-                                <input type="text" id="subtopic" name="subtopic">
+                                <input type="text" id="subtopic" name="subtopic" placeholder="text what will display on picture">
                             </div>
-                            <div class="input" id="input-region">
+                            <div class="input" id="insert-region">
                                 <label for="region">region</label>
-                                <input type="text" id="region" name="region">
+                                <input type="text" id="region" name="region" placeholder="article belong to which region">
                             </div>
-                            <div class="input" id="input-photoresource">
+                            <div class="input" id="insert-photoresource">
                                 <label for="photoresource">photoresource</label>
-                                <input type="text" id="photoresource" name="photoresource">
+                                <input type="text" id="photoresource" name="photoresource" placeholder="photoresource of article">
                             </div>
-                            <div class="input" id="input-specproject">
+                            <div class="input" id="insert-specproject">
                                 <label for="specproject">specproject</label>
-                                <input type="text" id="specproject" name="specproject">
+                                <input type="text" id="specproject" name="specproject" placeholder="article belong to which specproject">
                             </div>
-                            <div class="input" id="input-id-author">
-                                <label for="id_author">id_author</label>
-                                <input type="text" id="id_author" name="id_author">
+                            <div class="input" id="insert-expert">
+                                <label for="expert">expert</label>
+                                <input type="text" id="expert" name="expert" placeholder="id of real expert who wrote article">
                             </div>
                             <button type="submit">INSERT</button>
                         </form>
@@ -90,17 +91,19 @@
                 <div class="col-sm-6">
                     <section class="get">
                         <h3>Get Data</h3>
-                        <div>
+                        <form action="/get" method="post">
                             <label for="get-elem">Choose type of article you want to see:</label>
                             <select name="get-elem" id="get-elem" class="form-control">
                                 <option value="" selected disabled hidden>Choose here</option>
-                                <option value="usual-article">article</option>
-                                <option value="spec-project-article">spec-project article</option>
+                                <option value="article">article</option>
+                                <option value="project">spec-project article</option>
                             </select>
-                            <label for="getId">ID:</label>
-                            <input type="text" id="getId" name="getId">
-                            <a id="getDataA" href="/">Go to article</a>
-                        </div>
+                            <div class="input">
+                                <label for="id">ID:</label>
+                                <input type="text" id="id" name="id">
+                            </div>
+                            <button type="submit">GO TO ARTICLE</button>
+                        </form>
                     </section>
                 </div>
             </div>
@@ -109,21 +112,22 @@
                     <section class="update">
                         <h3>Update Data</h3>
                         <form action="/update" method="post">
-                            <label for="update-type">Choose:</label>
-                            <select name="update-type" id="update-type" class="form-control">
+                            <label for="update-elem">Choose:</label>
+                            <select name="update-elem" id="update-elem" class="form-control">
                                 <option value="" selected disabled hidden>Choose here</option>
-                                <option value="article">article</option>
-                                <option value="specprojects">spec-project article</option>
-                                <option value="article-topic">spec-project topic</option>
+                                <option value="usual-article">article</option>
+                                <option value="expert-article">expert article</option>
+                                <option value="spec-project-article">spec-project article</option>
+                                <option value="spec-project-topic">spec-project topic</option>
                                 <option value="experts">expert</option>
                             </select>
                             <div class="input">
-                                <label for="id">ID</label>
-                                <input type="text" id="updateId" name="id">
+                                <label for="updateId">ID</label>
+                                <input type="text" id="updateId" name="updateId">
                             </div>
                             <label>Select field you want to update:</label>
                             <div class="form-check" id="update-id">
-                                <input type="checkbox" class="form-check-input" id="id" name="new-id">
+                                <input type="checkbox" class="form-check-input" id="id">
                                 <label class="form-check-label" for="id">id</label>
                             </div>
                             <div class="form-check" id="update-name">
@@ -162,9 +166,9 @@
                                 <input type="checkbox" class="form-check-input" id="specproject" >
                                 <label class="form-check-label" for="specproject">specproject</label>
                             </div>
-                            <div class="form-check" id="update-id-author">
-                                <input type="checkbox" class="form-check-input" id="id-author" >
-                                <label class="form-check-label" for="id-author">id-author</label>
+                            <div class="form-check" id="update-expert">
+                                <input type="checkbox" class="form-check-input" id="expert" >
+                                <label class="form-check-label" for="expert">expert</label>
                             </div>
                             <div class="form-check" id="update-subtopic">
                                 <input type="checkbox" class="form-check-input" id="subtopic" >
@@ -182,8 +186,8 @@
                     <section class="delete">
                         <h3>Delete Data</h3>
                         <form action="/delete" method="post">
-                            <label for="delelem">Choose type of item you want to delete:</label>
-                            <select name="delelem" id="delelem" class="form-control">
+                            <label for="delete-elem">Choose type of item you want to delete:</label>
+                            <select name="delete-elem" id="delete-elem" class="form-control">
                                 <option value="" selected disabled hidden>Choose here</option>
                                 <option value="article">article</option>
                                 <option value="specprojects">spec-project article</option>
@@ -192,9 +196,9 @@
                             </select>
                             <div class="input">
                                 <label for="id">ID</label>
-                                <input type="text" id="deleteId" name="id">
+                                <input type="text" id="id" name="id">
                             </div>
-                            <button type="submit" id="deleteBtn">DELETE</button>
+                            <button type="submit">DELETE</button>
                         </form>
                     </section>
                 </div>

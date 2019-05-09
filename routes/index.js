@@ -197,59 +197,48 @@ router.get('/admin', function(req, res, next){
 
 router.post('/insert', function(req, res, next) {
     let collection;
-    var item;
+    var item = {
+        description: req.body.description
+    };
     if(req.body.name){
-      item = {
-          id: parseFloat(req.body.id),
-          name: req.body.name,
-          description: req.body.description
-      };
+      item.id = parseFloat(req.body.id);
+      item.name = req.body.name;
       collection = "experts";
-    } else if(req.body.region || req.body.topic){
-        item = {
-            id: parseFloat(req.body.id),
-            title: req.body.title,
-            description: req.body.description,
-            text: req.body.text,
-            author: req.body.author,
-            topic: req.body.topic,
-            subtopic: req.body.subtopic,
-            date: new Date(req.body.date),
-            photoresource: req.body.photoresource,
-            region: req.body.region
-        };
-        collection = "article";
-    } else if(req.body.text){
-        item = {
-            id: parseFloat(req.body.id),
-            title: req.body.title,
-            description: req.body.description,
-            author: req.body.author,
-            subtopic: req.body.subtopic,
-            date: new Date(req.body.date),
-            photoresource: req.body.photoresource,
-            text: req.body.text,
-            specproject: req.body.specproject
-        };
-        collection = "specprojects";
-    } else{
-        item = {
-            id: req.body.id,
-            title: req.body.title,
-            description: req.body.description,
-            author: req.body.author,
-            subtopic: req.body.subtopic,
-            date : new Date(req.body.date),
-            photoresource: req.body.photoresource,
-            specproject: req.body.specproject
-        };
-        collection = "article";
+    } else {
+        item.title = req.body.title;
+        item.text = req.body.text;
+        item.author = req.body.author;
+        item.subtopic = req.body.subtopic;
+        item.date = req.body.date;
+        item.photoresource = req.body.photoresource;
+
+        if(req.body.region || req.body.topic){
+            item.topic = req.body.topic;
+            item.region = req.body.region;
+            item.id = parseFloat(req.body.id)
+
+            collection = "article";
+            if(req.body.expert){
+                item.expert = req.body.expert;
+            }
+        } else {
+            if(req.body.specproject){
+                item.id = parseFloat(req.body.id);
+                item.specproject = req.body.specproject;
+                collection = "specprojects";
+            } else if(req.body.text){
+                    item.id = req.body.id;
+                    item.specproject = req.body.specproject;
+                    collection = "article";
+            }
+        }
     }
 
   mongo.connect(url, function(err, db) {
     assert.equal(null, err);
     db.collection(collection).insertOne(item, function(err, result) {
       assert.equal(null, err);
+        console.log("Object is inserted");
       db.close();
     });
   });
@@ -257,15 +246,19 @@ router.post('/insert', function(req, res, next) {
   res.redirect('/admin');
 });
 
+router.post('/get', function (req, res, next) {
+   res.redirect("/"+req.body['get-elem']+"?id="+req.body.id);
+});
+
 router.post('/delete', function (req, res, next) {
     let collection;
     let id;
-    if("article-topic" === req.body.delelem) {
+    if("article-topic" === req.body['delete-elem']) {
         id = req.body.id;
         collection = "article";
     } else {
         id= parseFloat(req.body.id);
-        collection = req.body.delelem;
+        collection = req.body['delete-elem'];
     }
     mongo.connect(url, function(err, db) {
         assert.equal(null, err);
@@ -286,23 +279,34 @@ router.post('/update', function(req, res, next){
 
     let collection;
     let id;
-    let item ={};
+    let item = {};
 
-    if(req.body['update-type']==='article-topic'){
-        collection = 'article';
-        id = req.body.id;
+    if(req.body['update-elem'] ==='spec-project-topic'){
+        id = req.body.updateId;
     } else {
-        collection = req.body['update-type'];
-        id = parseFloat(req.body.id);
+        id = parseFloat(req.body.updateId);
+    }
+
+    if(req.body['update-elem'] ==='spec-project-article'){
+        collection = 'specprojects';
+    } else if(req.body['update-elem'] ==='experts'){
+        collection = 'experts';
+    } else {
+        collection = 'article';
     }
 
     if(req.body.id){
-        if(req.body['update-type']==='article-topic')
+        if(req.body['update-elem'] === 'spec-project-topic'){
             item.id = req.body.id;
+        }
         else item.id = parseFloat(req.body.id);
     }
+
     if(req.body.title){
         item.title = req.body.title;
+    }
+    if(req.body.name){
+        item.name = req.body.name;
     }
     if(req.body.description){
         item.description = req.body.description;
@@ -310,8 +314,8 @@ router.post('/update', function(req, res, next){
     if(req.body.author){
         item.author = req.body.author;
     }
-    if(req.body['id-author']){
-        item.id_author = req.body['id-author'];
+    if(req.body.expert){
+        item.expert = req.body.expert;
     }
     if(req.body.date){
         item.date = req.body.date;

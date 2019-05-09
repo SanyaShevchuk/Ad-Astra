@@ -1,5 +1,5 @@
 let submit_btn = $('#submit_btn');
-let selectTypeOfElem = $('#insert-type-of-elem');
+let insert = $('#insert-elem');
 
 function validate(){
   let login = $('input[type=text]').val();
@@ -19,99 +19,71 @@ function validate(){
   }
 }
 
-function chooseTypeOfElement(){
-  let artilce = selectTypeOfElem.val();
-  if(artilce === 'usual-article'){
-    $('#input-id').show();
-    $('#input-title').show();
-    $('#input-description').show();
-    $('#input-text').show();
-    $('#input-author').show();
-    $('#input-topic').show();
-    $('#input-subtopic').show();
-    $('#input-date').show();
-    $('#input-photoresource').show();
-    $('#input-region').show();
+insert.change(function (){
+  $('.insert button[type="submit"]').show();
+  let article = insert.val();
 
-    $('#input-name').hide();
-    $('#input-specproject').hide();
+  $('#insert-id').show();
+  $('#insert-description').show();
 
-  } else if(artilce === 'spec-project-article'){
-    $('#input-id').show();
-    $('#input-title').show();
-    $('#input-description').show();
-    $('#input-text').show();
-    $('#input-author').show();
-    $('#input-subtopic').show();
-    $('#input-date').show();
-    $('#input-specproject').show();
-    $('#input-photoresource').show();
+ if(article === 'experts'){
 
-    $('#input-name').hide();
-  } else if(artilce === 'expert-information'){
-    $('#input-description').show();
-    $('#input-id').show();
-    $('#input-name').show();
+    $('#insert-name').show();
 
-    $('#input-specproject').hide();
-    $('#input-title').hide();
-    $('#input-text').hide();
-    $('#input-author').hide();
-    $('#input-topic').hide();
-    $('#input-subtopic').hide();
-    $('#input-date').hide();
-    $('#input-photoresource').hide();
-    $('#input-region').hide();
-  } else if(artilce === 'spec-project-topic'){
-    $('#input-id').show();
-    $('#input-description').show();
-    $('#input-title').show();
-    $('#input-author').show();
-    $('#input-specproject').show();
-    $('#input-subtopic').show();
-    $('#input-date').show();
-    $('#input-photoresource').show();
+    $('#insert-specproject').hide();
+    $('#insert-title').hide();
+    $('#insert-text').hide();
+    $('#insert-author').hide();
+    $('#insert-topic').hide();
+    $('#insert-subtopic').hide();
+    $('#insert-date').hide();
+    $('#insert-photoresource').hide();
+    $('#insert-region').hide();
+    $('#insert-expert').hide();
 
-    $('#input-region').hide();
-    $('#input-topic').hide();
-    $('#input-name').hide();
-    $('#input-text').hide();
+  } else {
+     $('#insert-title').show();
+     $('#insert-text').show();
+     $('#insert-author').show();
+     $('#insert-subtopic').show();
+     $('#insert-date').show();
+     $('#insert-photoresource').show();
+     $('#insert-name').hide();
+
+     if(article === 'spec-project-article' || article === 'spec-project-topic'){
+       $('#insert-specproject').show();
+
+       $('#insert-expert').hide();
+       $('#insert-region').hide();
+       $('#insert-topic').hide();
+
+     } else {
+         $('#insert-specproject').hide();
+         $('#insert-region').show();
+         $('#insert-topic').show();
+
+         if(article === 'usual-article'){
+            $('#insert-expert').hide();
+         } else if(article === 'expert-article'){
+            $('#insert-expert').show();
+         }
+     }
   }
-}
+});
 
 $('#get-elem').change(function(){
-  if($('#get-elem').val()==='usual-article')
-    $('#getDataA').attr('href', '/article?id=');
-  else if($('#get-elem').val()==='spec-project-article')
-    $('#getDataA').attr('href', '/project?id=');
-
-  $('.get label[for="getId"]').show();
-  $('#getId').show();
-})
-
-$('#getId').on('change',function(e) {
-  $('#getDataA').attr('href', $('#getDataA').attr('href')+$('#getId').val());
+  $('.get .input').show();
 });
 
-$('#getId').on('input',function(e) {
-  $('#getDataA').show();
+$('.get #id').on('input', function(){
+  $('.get button[type="submit"]').show();
 })
 
-$('#delelem').change(function(){
-  $('.delete label[for="id"]').show();
-  $('#deleteId').show();
-});
-
-$('#deleteId').on('input', function(){
-  $('#deleteBtn').show();
-})
-
-$('#update-type').change(function(){
-  $('#updateId').show();
-  $('.update label[for="id"]').show();
+$('#update-elem').change(function(){
+  $('.update .input').show();
   $('.update .input+label').show();
 
-  let itemType = $('#update-type').val();
+  let itemType = $('#update-elem').val();
   $('#update-id').show();
   $('#update-description').show();
   if(itemType ==='experts'){
@@ -126,30 +98,36 @@ $('#update-type').change(function(){
     $('#update-topic').hide();
     $('#update-region').hide();
     $('#update-specproject').hide();
+    $('#update-expert').hide();
   } else {
-    $('#update-title').show();
-    $('#update-author').show();
-    $('#update-text').show();
-    $('#update-date').show();
-    $('#update-photoresource').show();
-    $('#update-subtopic').show();
+      $('#update-title').show();
+      $('#update-author').show();
+      $('#update-text').show();
+      $('#update-date').show();
+      $('#update-photoresource').show();
+      $('#update-subtopic').show();
 
-    $('#update-name').hide();
-    if (itemType ==='article') {
-      $('#update-topic').show();
-      $('#update-region').show();
-      $('#update-specproject').hide();
-    } else {
-      $('#update-specproject').show();
-      $('#update-topic').hide();
-      $('#update-region').hide();
-    }
+      $('#update-name').hide();
+        if (itemType ==='usual-article') {
+          $('#update-topic').show();
+          $('#update-region').show();
+          $('#update-specproject').hide();
+          $('#update-expert').hide();
+          } else if(itemType ==='expert-article'){
+            $('#update-topic').show();
+            $('#update-region').show();
+            $('#update-expert').show();
+            $('#update-specproject').hide();
+          }else {
+            $('#update-specproject').show();
+            $('#update-topic').hide();
+            $('#update-region').hide();
+            $('#update-expert').hide();
+          }
   }
 });
 
-
-$('.update input:checkbox').change(
-    function(){
+$('.update input:checkbox').change(function(){
       if ($(this).is(':checked')) {
         $(this).parent().append("<input type='text' name="+$(this).attr('id')+" />");
       } else{
@@ -161,5 +139,12 @@ $('#updateId').on('input', function(){
   $('.update button[type="submit"]').show();
 })
 
-selectTypeOfElem.change(chooseTypeOfElement);
+$('#delete-elem').change(function(){
+  $('.delete .input').show();
+});
+
+$('.delete #id').on('input', function(){
+  $('.delete button[type="submit"]').show();
+})
+
 submit_btn.click(validate);
