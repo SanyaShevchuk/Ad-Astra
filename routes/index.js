@@ -209,7 +209,7 @@ router.post('/insert', function(req, res, next) {
         item.text = req.body.text;
         item.author = req.body.author;
         item.subtopic = req.body.subtopic;
-        item.date = req.body.date;
+        item.date = new Date(req.body.date);
         item.photoresource = req.body.photoresource;
 
         if(req.body.region || req.body.topic){

@@ -91,6 +91,11 @@ hr{
   margin-bottom: 1%;
 }
 
+footer#footer{
+  left: -4.4%;
+  width: 108.6%;
+}
+
 @media screen and (max-width: 720px){
 
   .article-title{
