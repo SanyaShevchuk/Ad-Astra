@@ -5,7 +5,7 @@ var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
 
  var url = 'mongodb://sheva:sheva@localhost:27017/adastra';
-//var url = 'mongodb://localhost:27017/adastra';
+// var url = 'mongodb://localhost:27017/adastra';
 
 
 router.get('/topic', function(req,res,next){
@@ -72,15 +72,6 @@ router.get('/article', function(req, res, next) {
       res.render('article', {news:news});
       db.close();
     });
-    // var cursor = db.collection('article').findOne({'id': Number(req.query.id)})
-    //     .then(function(doc){
-    //       if(!doc){
-    //         throw new Error('No record found.');
-    //       }
-    //       news = doc;
-    //       res.render('article', {news: news});
-    //     });
-    // db.close();
   })
 });
 
@@ -210,6 +201,10 @@ router.post('/insert', function(req, res, next) {
         item.author = req.body.author;
         item.subtopic = req.body.subtopic;
         item.date = new Date(req.body.date);
+        /**
+         * bug in mongo, it subtracts one day, so lets add it
+         * */
+        item.date.setDate(item.date.getDate() + 1);
         item.photoresource = req.body.photoresource;
 
         if(req.body.region || req.body.topic){
@@ -319,6 +314,10 @@ router.post('/update', function(req, res, next){
     }
     if(req.body.date){
         item.date = new Date(req.body.date);
+        /**
+         * bug in mongo, it subtracts one day, so lets add it
+         * */
+        item.date.setDate(item.date.getDate() + 1);
     }
     if(req.body.topic){
         item.topic = req.body.topic;
