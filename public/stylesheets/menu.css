@@ -54,20 +54,16 @@ nav{
     width: 100%;
     /* margin-left: 2%; */
     margin-left: 0;
-}
-
-
-.navbar-header img{
-    width: 5%;
-    height: auto;
-    margin-top: 2.5%;
-    cursor: pointer;
+    position: relative;
 }
 
 .navbar-header .logo{
     width: 7%;
     float: right;
+    /*position: absolute;*/
+    /*right: 0;*/
     margin-top: 0%;
+    cursor: pointer;
 }
 
 .navbar-header span{

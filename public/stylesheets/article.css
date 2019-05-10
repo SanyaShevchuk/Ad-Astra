@@ -5,7 +5,8 @@ body *{
 body{
   margin: 0 4% 0 4%;
 }
-img{
+
+#news img{
   max-width: 70%;
 }
 
