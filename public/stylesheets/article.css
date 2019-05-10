@@ -88,7 +88,7 @@ hr{
 
 #facebook{
   float: right;
-  margin-bottom: 1%;
+  margin-bottom: 2%;
 }
 
 footer#footer{
@@ -98,6 +98,10 @@ footer#footer{
 
 @media screen and (max-width: 720px){
 
+  #facebook{
+    float: left;
+    margin-bottom: 1%;
+  }
   .article-title{
     font-size: 4.3vw;
     font-weight: 700;
@@ -121,5 +125,11 @@ footer#footer{
   .article-title-photo a {
     left: 0;
     right: unset;
+  }
+
+  #facebook{
+    float: left;
+    margin-bottom: 2%;
+    margin-left: 1%;
   }
 }
