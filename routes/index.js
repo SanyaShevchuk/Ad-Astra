@@ -4,8 +4,8 @@ var mongo = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
 
- var url = 'mongodb://sheva:sheva@localhost:27017/adastra';
-// var url = 'mongodb://localhost:27017/adastra';
+ // var url = 'mongodb://sheva:sheva@localhost:27017/adastra';
+var url = 'mongodb://localhost:27017/adastra';
 
 
 router.get('/topic', function(req,res,next){
@@ -40,7 +40,7 @@ router.get('/region', function(req,res,next){
 
 router.get('/article', function(req, res, next) {
   mongo.connect(url, function (err, db) {
-    var news;
+    let news;
     assert.equal(null, err);
     let cursor = db.collection('article').aggregate(
         [
@@ -56,6 +56,7 @@ router.get('/article', function(req, res, next) {
                     topic:1,
                     author:1,
                     photoresource:1,
+                    visitors:1,
                     date:
                         {$dateToString:
                               {format:"%d.%m.%Y", date:"$date"}
@@ -68,9 +69,14 @@ router.get('/article', function(req, res, next) {
       if(!doc){
         throw new Error('No record found.');
       }
-      news = doc;
-      res.render('article', {news:news});
-      db.close();
+        doc.visitors++;
+        news = doc;
+        db.collection('article').updateOne({id: Number(req.query.id)}, {$set:{visitors: doc.visitors}},
+            function(err, result){
+                assert.equal(null, err);
+                db.close();
+            });
+        res.render('article', {news:news});
     });
   })
 });
@@ -107,6 +113,7 @@ router.get('/project', function(req, res, next) {
                   author:1,
                   specproject:1,
                   photoresource:1,
+                  visitors:1,
                   date:
                       {$dateToString:
                             {format:"%d.%m.%Y", date:"$date"}
@@ -119,7 +126,13 @@ router.get('/project', function(req, res, next) {
       if(!doc){
         throw new Error('No record found.');
       }
-      news = doc;
+        doc.visitors++;
+        news = doc;
+        db.collection('specprojects').updateOne({id: Number(req.query.id)}, {$set:{visitors: doc.visitors}},
+            function(err, result){
+                assert.equal(null, err);
+                db.close();
+            });
       res.render('project', {news:news});
       db.close();
     });

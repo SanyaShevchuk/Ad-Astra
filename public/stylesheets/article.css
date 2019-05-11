@@ -14,10 +14,6 @@ body{
   max-width: 70%;
 }
 
-#news {
-  background-color: rgb(249,249,249);
-}
-
 .article-text a{
   opacity: 0.5;
   color: orange;
@@ -52,21 +48,6 @@ body{
   margin-bottom: 1%;
 }
 
-.article-title-photo a{
-  position: absolute;
-  right: 0;
-  top: 0;
-  font-family: 'Haarlemmer W04','Georgia',serif;
-  background: rgba(0,0,0,0.8);
-  border-top: 5px solid rgb(0, 0, 255);;
-  color: #ffffff;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 16px;
-  opacity: .8;
-  padding: 3px 20px;
-}
-
 .article-title-photo-resource{
     position: absolute;
     right: 0;
@@ -89,6 +70,23 @@ body{
 
 .article-date{
   text-align: right;
+}
+
+.article-visitors{
+  text-align: center;
+
+  font-size: 1.2vw;
+  font-family: Larsseit;
+  border: 1px solid green;
+  display: block;
+  width: 30%;
+  margin: auto;
+  margin-top: 1%;
+  margin-bottom: -2%;
+}
+
+.article-visitors span{
+  font-weight: 700;
 }
 
 hr{
