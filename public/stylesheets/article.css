@@ -35,6 +35,10 @@ body{
   text-align: center;
 }
 
+.article-description{
+  font-style: italic;
+}
+
 .article-title-photo{
   position: relative;
   float:right;
@@ -137,10 +141,6 @@ footer#footer{
     float: left;
     margin: auto;
     padding-left: 0;
-  }
-
-  .article-title-photo a {
-    left: 0;
-    right: unset;
+    margin-bottom: 5%;
   }
 }
