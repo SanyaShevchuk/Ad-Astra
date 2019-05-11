@@ -79,14 +79,11 @@ body{
   font-family: Larsseit;
   border: 1px solid green;
   display: block;
-  width: 30%;
+  width: 15%;
+  font-weight: 700;
   margin: auto;
   margin-top: 1%;
   margin-bottom: -2%;
-}
-
-.article-visitors span{
-  font-weight: 700;
 }
 
 hr{
@@ -141,4 +138,8 @@ footer#footer{
     padding-left: 0;
     margin-bottom: 5%;
   }
+
+  .article-visitors{
+    font-size: 2.3vw;
+ }
 }
