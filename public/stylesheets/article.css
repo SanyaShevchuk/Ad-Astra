@@ -6,7 +6,11 @@ body{
   margin: 0 4% 0 4%;
 }
 
-#news img{
+.article{
+  position: relative;
+}
+
+.article-text img{
   max-width: 70%;
 }
 
@@ -28,18 +32,19 @@ body{
 .article-title{
   font-size: 2.5vw;
   margin-bottom: 2%;
+  text-align: center;
 }
 
 .article-title-photo{
   position: relative;
   float:right;
-  width: 46%;
+  width: 40%;
 }
 
 .article-title-photo img{
   float: right;
   width: 100%;
-  max-width: 100%;
+  /*max-width: 100%;*/
   margin-bottom: 1%;
 }
 
@@ -83,14 +88,25 @@ body{
 }
 
 hr{
-  margin: 0 0 3% 0;
+  margin: 1% 0 3% 0;
   clear: both;
 }
 
 #facebook{
+  /*position: absolute;*/
+  /*left: 0;*/
+  /*bottom: 0%;*/
   float: left;
-  margin-bottom: 2%;
+  clear: both;
+  margin-bottom: 1%;
 }
+
+#visitor-counter{
+  margin: auto;
+  display: block;
+  text-align: center;
+}
+
 
 footer#footer{
   left: -4.4%;

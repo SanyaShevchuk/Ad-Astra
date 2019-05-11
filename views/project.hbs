@@ -7,6 +7,7 @@
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/uk_UA/sdk.js#xfbml=1&version=v3.3&appId=215299406056993&autoLogAppEvents=1"></script>
     <div class="container" id="news">
+        <h1 class="article-title">{{{news.title}}}</h1>
         <div class="article-title-photo">
             <img src="images/articles/obor{{news.id}}.jpg" class="img-responsive" >
                 {{#if news.subtopic}}
@@ -16,7 +17,7 @@
                     {{/if}}
             <span class="article-title-photo-resource">Фото: {{news.photoresource}}</span>
         </div>
-        <h1 class="article-title">{{{news.title}}}</h1>
+
         <p class="article-description">
             {{news.description}}
         </p>

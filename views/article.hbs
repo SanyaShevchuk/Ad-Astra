@@ -7,18 +7,20 @@
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/uk_UA/sdk.js#xfbml=1&version=v3.3&appId=215299406056993&autoLogAppEvents=1"></script>
     <div class="container" id="news">
+        <h1 class="article-title">{{{news.title}}}</h1>
         <div class="article-title-photo">
+
             <img src="images/articles/{{news.id}}.jpg" class="img-responsive" >
-                {{#if news.subtopic}}
-                    <a class="href-on-photo" href="article?id={{news.id}}">{{news.subtopic}}</a>
-                    {{else if news.topic}}
-                    <a class="href-on-photo" href="article?id={{news.id}}">{{news.topic}}</a>
-                    {{else if news.region}}
-                    <a class="href-on-photo" href="article?id={{news.id}}">{{news.region}}</a>
-                    {{/if}}
+            {{#if news.subtopic}}
+                <a class="href-on-photo" href="article?id={{news.id}}">{{news.subtopic}}</a>
+            {{else if news.topic}}
+                <a class="href-on-photo" href="article?id={{news.id}}">{{news.topic}}</a>
+            {{else if news.region}}
+                <a class="href-on-photo" href="article?id={{news.id}}">{{news.region}}</a>
+            {{/if}}
             <span class="article-title-photo-resource">Фото: {{news.photoresource}}</span>
         </div>
-        <h1 class="article-title">{{{news.title}}}</h1>
+
         <p class="article-description">
             {{news.description}}
         </p>
@@ -35,5 +37,11 @@
         <hr>
         <p class="article-text">{{{news.text}}}</p>
     </div>
-    
+    <div id="visitor-counter">
+        <a href='https://www.counters-free.net/'>www.Counters-Free.net</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=e5443f84410b38cb41a5f8540131945872372d38'></script>
+        <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/525933/t/7"></script>
+    </div>
+    <div style="text-align:center;"><script type="text/javascript" src="http://services.webestools.com/cpt_visitors/61966-15-1.js"></script></div><a href="/" style="pointer-events: none; cursor: default;display:block;text-align:center;" title="Tools services webmasters counters generators scripts tutorials free"></a>
+
+
 </body>
