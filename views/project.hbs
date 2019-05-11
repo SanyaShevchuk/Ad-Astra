@@ -10,11 +10,6 @@
         <h1 class="article-title">{{{news.title}}}</h1>
         <div class="article-title-photo">
             <img src="images/articles/obor{{news.id}}.jpg" class="img-responsive" >
-                {{#if news.subtopic}}
-                    <a class="href-on-photo" href="article?id={{news.id}}">{{news.subtopic}}</a>
-                    {{else}}
-                    <a class="href-on-photo" href="article?id={{news.id}}">останні</a>
-                    {{/if}}
             <span class="article-title-photo-resource">Фото: {{news.photoresource}}</span>
         </div>
 
