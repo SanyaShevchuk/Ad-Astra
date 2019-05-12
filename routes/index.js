@@ -5,7 +5,7 @@ var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
 
  var url = 'mongodb://sheva:sheva@localhost:27017/adastra';
-//var url = 'mongodb://localhost:27017/adastra';
+// var url = 'mongodb://localhost:27017/adastra';
 
 
 router.get('/topic', function(req,res,next){
@@ -133,7 +133,7 @@ router.get('/project', function(req, res, next) {
                 assert.equal(null, err);
                 db.close();
             });
-      res.render('project', {news:news});
+      res.render('article', {news:news});
       db.close();
     });
   })
@@ -202,7 +202,8 @@ router.get('/admin', function(req, res, next){
 router.post('/insert', function(req, res, next) {
     let collection;
     var item = {
-        description: req.body.description
+        description: req.body.description,
+        visitors: 0
     };
     if(req.body.name){
       item.id = parseFloat(req.body.id);

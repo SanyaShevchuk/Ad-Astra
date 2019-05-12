@@ -8,7 +8,11 @@
     <div class="container" id="news">
         <h1 class="article-title">{{{news.title}}}</h1>
         <div class="article-title-photo">
-            <img src="images/articles/{{news.id}}.jpg" class="img-responsive" >
+            {{#if news.specproject}}
+                <img src="images/articles/obor{{news.id}}.jpg" class="img-responsive" >
+            {{else}}
+                <img src="images/articles/{{news.id}}.jpg" class="img-responsive" >
+            {{/if}}
             <span class="article-title-photo-resource">Фото: {{news.photoresource}}</span>
         </div>
 
@@ -24,8 +28,12 @@
                 <p class="article-date">{{news.date}}</p>
             </div>
         </div>
-        <div id="facebook" class="fb-share-button" data-href="https://adastra.icu/article?id={{news.id}}" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fadastra.icu%2Farticle%3Fid%3D{{news.id}}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Поделиться</a></div>
-        <hr>
+        {{#if news.specproject}}
+            <div id="facebook" class="fb-share-button" data-href="https://adastra.icu/project?id={{news.id}}" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fadastra.icu%2Fproject%3Fid%3D{{news.id}}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Поделиться</a></div>
+        {{else}}
+            <div id="facebook" class="fb-share-button" data-href="https://adastra.icu/article?id={{news.id}}" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fadastra.icu%2Farticle%3Fid%3D{{news.id}}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Поделиться</a></div>
+        {{/if}}
+         <hr>
         <p class="article-text">{{{news.text}}}</p>
     </div>
 <span class="article-visitors">📖—{{news.visitors}}</span>
