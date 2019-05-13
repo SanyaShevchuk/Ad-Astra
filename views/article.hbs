@@ -28,11 +28,24 @@
                 <p class="article-date">{{news.date}}</p>
             </div>
         </div>
-        {{#if news.specproject}}
-            <div id="facebook" class="fb-share-button" data-href="https://adastra.icu/project?id={{news.id}}" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fadastra.icu%2Fproject%3Fid%3D{{news.id}}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Поделиться</a></div>
-        {{else}}
-            <div id="facebook" class="fb-share-button" data-href="https://adastra.icu/article?id={{news.id}}" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fadastra.icu%2Farticle%3Fid%3D{{news.id}}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Поделиться</a></div>
-        {{/if}}
+
+        <div class="article-share">
+            {{#if news.specproject}}
+            <!--        <div id="facebook" class="fb-share-button" data-href="https://adastra.icu/project?id={{news.id}}" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fadastra.icu%2Fproject%3Fid%3D{{news.id}}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Поделиться</a></div>-->
+                <a class="tgme_action_button" href="tg://msg_url?url=https://adastra.icu/project?id={{news.id}}"><img class = "article-share-button" src="images/label/telegram.png"></a>
+                <a href="http://www.facebook.com/sharer.php?u=https://adastra.icu/project?id={{news.id}}" target="_blank">
+                <img class = "article-share-button" src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+                </a>
+            {{else}}
+            <!--    <div id="facebook" class="fb-share-button" data-href="https://adastra.icu/article?id={{news.id}}" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fadastra.icu%2Farticle%3Fid%3D{{news.id}}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Поделиться</a></div>-->
+                <a class="tgme_action_button" href="tg://msg_url?url=https://adastra.icu/article?id={{news.id}}"><img class = "article-share-button" src="images/label/telegram.png"></a>
+                <a href="http://www.facebook.com/sharer.php?u=https://adastra.icu/article?id={{news.id}}" target="_blank">
+                <img class = "article-share-button" src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+                </a>
+            {{/if}}
+        </div>
+<!--<a href='https://telegram.me/share/url?url=https://adastra.icu/article?id={{news.id}}' onclick='window.open(&apos;https://telegram.me/share/url?url==&apos;+encodeURIComponent(location.href)+&apos;&amp;bodytext=&amp;tags=&amp;text=&apos;+encodeURIComponent(document.title));return false;' rel='nofollow' style='text-decoration:none;' title='Share on Telegram'><img src='http://telegram.wiki/_media/tips:sharewebsite:share_white.png' style='height:32px; width:82px;'/></a>-->
+
          <hr>
         <p class="article-text">{{{news.text}}}</p>
     </div>

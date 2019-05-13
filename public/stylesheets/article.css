@@ -91,13 +91,27 @@ hr{
   clear: both;
 }
 
-#facebook{
-  /*position: absolute;*/
-  /*left: 0;*/
-  /*bottom: 0%;*/
-  float: left;
-  clear: both;
-  margin-bottom: 1%;
+/*#facebook{*/
+/*  !*position: absolute;*!*/
+/*  !*left: 0;*!*/
+/*  !*bottom: 0%;*!*/
+/*  float: left;*/
+/*  clear: both;*/
+/*  margin-bottom: 1%;*/
+/*  display: inline-block;*/
+/*}*/
+
+
+
+.article-share{
+  /*float: right;*/
+   /*clear: both;*/
+   margin-bottom: 1%;
+}
+
+img.article-share-button{
+  width: 40px;
+  display: inline-block;
 }
 
 #visitor-counter{
