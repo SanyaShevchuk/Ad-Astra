@@ -40,6 +40,7 @@ insert.change(function (){
     $('#insert-photoresource').hide();
     $('#insert-region').hide();
     $('#insert-expert').hide();
+    $('#insert-image').hide();
 
   } else {
      $('#insert-title').show();
@@ -48,6 +49,7 @@ insert.change(function (){
      $('#insert-subtopic').show();
      $('#insert-date').show();
      $('#insert-photoresource').show();
+     $('#insert-image').show();
      $('#insert-name').hide();
 
      if(article === 'spec-project-article' || article === 'spec-project-topic'){
@@ -89,6 +91,7 @@ $('#update-elem').change(function(){
   if(itemType ==='experts'){
     $('#update-name').show();
 
+    $('#update-image').hide();
     $('#update-title').hide();
     $('#update-author').hide();
     $('#update-text').hide();
@@ -101,6 +104,7 @@ $('#update-elem').change(function(){
     $('#update-expert').hide();
   } else {
       $('#update-title').show();
+      $('#update-image').show();
       $('#update-author').show();
       $('#update-text').show();
       $('#update-date').show();

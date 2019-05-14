@@ -4,8 +4,8 @@ var mongo = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
 
- var url = 'mongodb://sheva:sheva@localhost:27017/adastra';
- //var url = 'mongodb://localhost:27017/adastra';
+ // var url = 'mongodb://sheva:sheva@localhost:27017/adastra';
+ var url = 'mongodb://localhost:27017/adastra';
 
 router.get('/topic', function(req,res,next){
   mongo.connect(url, function(err, db){
@@ -56,6 +56,7 @@ router.get('/article', function(req, res, next) {
                     author:1,
                     photoresource:1,
                     visitors:1,
+                    image:1,
                     date:
                         {$dateToString:
                               {format:"%d.%m.%Y", date:"$date"}
@@ -213,6 +214,7 @@ router.post('/insert', function(req, res, next) {
         item.author = req.body.author;
         item.subtopic = req.body.subtopic;
         item.date = new Date(req.body.date);
+        item.image = req.body.image;
         item.visitors = 0;
         /**
          * bug in mongo, it subtracts one day, so lets add it
@@ -349,6 +351,9 @@ router.post('/update', function(req, res, next){
     }
     if(req.body.text){
         item.text = req.body.text;
+    }
+    if(req.body.image){
+        item.image = req.body.image;
     }
 
    mongo.connect(url, function(err, db){
