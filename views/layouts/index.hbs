@@ -54,8 +54,10 @@
     {{#if news.id}}
         {{#if news.specproject}}
             <meta property="og:image"         content="https://adastra.icu/images/articles/obor{{news.id}}.jpg" >
-        {{else}}
-            <meta property="og:image"         content="https://adastra.icu/images/articles/{{news.id}}.jpg" >
+        {{else if news.image}}
+            <meta property="og:image"         content="{{news.image}}" >
+	{{else}}
+	<meta property="og:image"         content="https://adastra.icu/images/articles/{{news.id}}.jpg" >
         {{/if}}
     {{else}}
            <meta property="og:image"         content="https://adastra.icu/images/label/logo.jpg" >
