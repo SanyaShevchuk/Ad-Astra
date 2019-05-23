@@ -113,6 +113,7 @@ router.get('/project', function(req, res, next) {
                   author:1,
                   specproject:1,
                   photoresource:1,
+		  image:1,
                   visitors:1,
                   date:
                       {$dateToString:
