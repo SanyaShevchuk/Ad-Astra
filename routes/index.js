@@ -4,8 +4,9 @@ var mongo = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
 
-  var url = 'mongodb://sheva:sheva@localhost:27017/adastra';
- // var url = 'mongodb://localhost:27017/adastra';
+  // var url = 'mongodb://sheva:sheva@localhost:27017/adastra';
+//  var url = 'mongodb://localhost:27017/adastra';
+var url = "mongodb+srv://admin:admin@newsfeed-rpxdh.mongodb.net/test?retryWrites=true&w=majority";
 
 router.get('/topic', function(req,res,next){
   mongo.connect(url, function(err, db){
@@ -81,65 +82,6 @@ router.get('/article', function(req, res, next) {
   })
 });
 
-router.get('/spec-project', function(req, res, next) {
-  mongo.connect(url, function(err, db){
-    var news = [];
-    assert.equal(null, err);
-    var cursor = db.collection('specprojects').find({'specproject':req.query.name}).sort({date:-1});
-    cursor.forEach(function(doc, err){
-      assert.equal(null, err);
-      news.push(doc);
-    }, function(){
-      db.close();
-      res.render('specproject', {news:news});
-    })
-  })
-});
-
-router.get('/project', function(req, res, next) {
-  mongo.connect(url, function (err, db) {
-    var news;
-    assert.equal(null, err);
-    let cursor = db.collection('specprojects').aggregate(
-        [
-          {$match:{id: Number(req.query.id)}},
-          {$project:
-                { _id:0,
-                  id:1,
-                  title:1,
-                  text:1,
-                  description:1,
-                  subtopic:1,
-                  author:1,
-                  specproject:1,
-                  photoresource:1,
-		  image:1,
-                  visitors:1,
-                  date:
-                      {$dateToString:
-                            {format:"%d.%m.%Y", date:"$date"}
-                      }
-                }
-          },
-          {$sort:{id:-1}}
-        ]);
-    cursor.forEach(function(doc){
-      if(!doc){
-        throw new Error('No record found.');
-      }
-        doc.visitors++;
-        news = doc;
-        db.collection('specprojects').updateOne({id: Number(req.query.id)}, {$set:{visitors: doc.visitors}},
-            function(err, result){
-                assert.equal(null, err);
-                db.close();
-            });
-      res.render('article', {news:news});
-      db.close();
-    });
-  })
-});
-
 router.get('/contacts', function(req, res, next) {
   res.render('contacts');
 });
@@ -162,38 +104,60 @@ router.get('/team', function(req, res, next) {
 });
 
 router.get('/', function(req, res, next) {
-  mongo.connect(url, function(err, db) {
-    let main_news, second_news = {};
-    let other_news = [];
-    let experts = [];
-    assert.equal(null, err);
-    let i=0;
-    let cursor= db.collection('article').find({expert:{$exists:false}}).sort({date:-1}).limit(8);
-    cursor.forEach(function(doc, err) {
-      assert.equal(null, err);
-      // if(doc.expert) experts.push(doc)
-      if(i==0) {
-        main_news = doc;
-        i++;
-      }
-      else if(i==1) {
-        second_news = doc;
-        i++;
-      }
-      else other_news.push(doc);
-
-    }, function() {
-
-      let cursor1= db.collection('article').find({expert:{$exists:true}}).sort({date:-1}).limit(3);
-      cursor1.forEach(function(doc, err){
-        assert.equal(null, err);
-        experts.push(doc);
-      }, function () {
-        db.close();
-        res.render('layout.hbs', {other_news: other_news, main_news: main_news, second_news: second_news, experts:experts});
-      })
-    });
+  // Can not connect to remote mongodb server
+  mongo.connect(url, { useNewUrlParser: true, useFindAndModify: false, dbName: 'newsfeed' }, (err, db) => {
+    console.log('err', err, db)
+    const collection = db("newsfeed").collection("article");
+    console.log(collection, 'collection')
+    // perform actions on the collection object
+    client.close();
+  }, (err, db) => {
+    console.log('db', err, db)
+    // const collection = db("newsfeed").collection("article");
+    const collection = db.s.children;
+    console.log(collection, 'collection')
+    // perform actions on the collection object
+    client.close();
   });
+
+  // mongo.connect(url, function(err, db) {
+  //   let main_news, second_news = {};
+  //   let other_news = [];
+  //   let experts = [];
+  //   assert.equal(null, err);
+  //   let i=0;
+
+  //   let cursor= db.collection('article').find({expert:{$exists:false}}).sort({date:-1}).limit(8);
+  //   const data = db.collection('article').find({});
+  //   console.log('data', data);
+  //   // console.log('cursor', cursor)
+  //   data.forEach(function(doc, err) {
+  //     console.log('docs', doc)
+  //     assert.equal(null, err);
+  //     // if(doc.expert) experts.push(doc)
+  //     if(i==0) {
+  //       main_news = doc;
+  //       i++;
+  //     }
+  //     else if(i==1) {
+  //       second_news = doc;
+  //       i++;
+  //     }
+  //     else other_news.push(doc);
+
+  //   }, function() {
+
+  //     let cursor1= db.collection('article').find({expert:{$exists:true}}).sort({date:-1}).limit(3);
+  //     cursor1.forEach(function(doc, err){
+  //       assert.equal(null, err);
+  //       experts.push(doc);
+  //     }, function () {
+  //       db.close();
+  //       console.log('close', main_news)
+  //       res.render('layout.hbs', {other_news: other_news, main_news: main_news, second_news: second_news, experts:experts});
+  //     })
+  //   });
+  // });
 });
 
 router.get('/admin', function(req, res, next){
@@ -238,9 +202,9 @@ router.post('/insert', function(req, res, next) {
                 item.specproject = req.body.specproject;
                 collection = "specprojects";
             } else if(req.body.text){
-                    item.id = req.body.id;
-                    item.specproject = req.body.specproject;
-                    collection = "article";
+                  item.id = req.body.id;
+                  item.specproject = req.body.specproject;
+                  collection = "article";
             }
         }
     }
