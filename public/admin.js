@@ -30,7 +30,6 @@ insert.change(function (){
 
     $('#insert-name').show();
 
-    $('#insert-specproject').hide();
     $('#insert-title').hide();
     $('#insert-text').hide();
     $('#insert-author').hide();
@@ -53,14 +52,11 @@ insert.change(function (){
      $('#insert-name').hide();
 
      if(article === 'spec-project-article' || article === 'spec-project-topic'){
-       $('#insert-specproject').show();
-
        $('#insert-expert').hide();
        $('#insert-region').hide();
        $('#insert-topic').hide();
 
      } else {
-         $('#insert-specproject').hide();
          $('#insert-region').show();
          $('#insert-topic').show();
 
@@ -100,7 +96,6 @@ $('#update-elem').change(function(){
     $('#update-subtopic').hide();
     $('#update-topic').hide();
     $('#update-region').hide();
-    $('#update-specproject').hide();
     $('#update-expert').hide();
   } else {
       $('#update-title').show();
@@ -115,15 +110,12 @@ $('#update-elem').change(function(){
         if (itemType ==='usual-article') {
           $('#update-topic').show();
           $('#update-region').show();
-          $('#update-specproject').hide();
           $('#update-expert').hide();
           } else if(itemType ==='expert-article'){
             $('#update-topic').show();
             $('#update-region').show();
             $('#update-expert').show();
-            $('#update-specproject').hide();
           }else {
-            $('#update-specproject').show();
             $('#update-topic').hide();
             $('#update-region').hide();
             $('#update-expert').hide();

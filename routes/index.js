@@ -4,11 +4,13 @@ var mongo = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
 
-  var url = 'mongodb://sheva:sheva@localhost:27017/adastra';
- // var url = 'mongodb://localhost:27017/adastra';
+  // var url = 'mongodb://sheva:sheva@localhost:27017/adastra';
+//  var url = 'mongodb://localhost:27017/adastra';
+// var url = "mongodb+srv://admin:admin@newsfeed-rpxdh.mongodb.net/test?retryWrites=true&w=majority";
+var url = "mongodb+srv://admin:admin@newsfeed-rpxdh.mongodb.net/test?retryWrites=true&w=majority";
 
 router.get('/topic', function(req,res,next){
-  mongo.connect(url, function(err, db){
+  mongo.connect(url, {dbName: 'newsfeed'}, function(err, db){
     var news = [];
     assert.equal(null, err);
     var cursor = db.collection('article').find({'topic':req.query.name}).sort({date:-1});
@@ -23,7 +25,7 @@ router.get('/topic', function(req,res,next){
 })
 
 router.get('/region', function(req,res,next){
-  mongo.connect(url, function(err, db){
+  mongo.connect(url, {dbName: 'newsfeed'}, function(err, db){
     var news = [];
     assert.equal(null, err);
     var cursor = db.collection('article').find({'region':req.query.name}).sort({date:-1});
@@ -38,8 +40,9 @@ router.get('/region', function(req,res,next){
 })
 
 router.get('/article', function(req, res, next) {
-  mongo.connect(url, function (err, db) {
+  mongo.connect(url, {dbName: 'newsfeed'}, function (err, db) {
     let news;
+    console.log(db, 'db');
     assert.equal(null, err);
     let cursor = db.collection('article').aggregate(
         [
@@ -57,14 +60,15 @@ router.get('/article', function(req, res, next) {
                     photoresource:1,
                     visitors:1,
                     image:1,
-                    date:
-                        {$dateToString:
-                              {format:"%d.%m.%Y", date:"$date"}
+                    date: 
+                        {
+                          $dateToString:
+                              {format:"%Y-%m-%d", date:"$date"}
                         }
                   }
             },
-            {$sort:{id:-1}}
             ]);
+
     cursor.forEach(function(doc){
       if(!doc){
         throw new Error('No record found.');
@@ -81,65 +85,6 @@ router.get('/article', function(req, res, next) {
   })
 });
 
-router.get('/spec-project', function(req, res, next) {
-  mongo.connect(url, function(err, db){
-    var news = [];
-    assert.equal(null, err);
-    var cursor = db.collection('specprojects').find({'specproject':req.query.name}).sort({date:-1});
-    cursor.forEach(function(doc, err){
-      assert.equal(null, err);
-      news.push(doc);
-    }, function(){
-      db.close();
-      res.render('specproject', {news:news});
-    })
-  })
-});
-
-router.get('/project', function(req, res, next) {
-  mongo.connect(url, function (err, db) {
-    var news;
-    assert.equal(null, err);
-    let cursor = db.collection('specprojects').aggregate(
-        [
-          {$match:{id: Number(req.query.id)}},
-          {$project:
-                { _id:0,
-                  id:1,
-                  title:1,
-                  text:1,
-                  description:1,
-                  subtopic:1,
-                  author:1,
-                  specproject:1,
-                  photoresource:1,
-		  image:1,
-                  visitors:1,
-                  date:
-                      {$dateToString:
-                            {format:"%d.%m.%Y", date:"$date"}
-                      }
-                }
-          },
-          {$sort:{id:-1}}
-        ]);
-    cursor.forEach(function(doc){
-      if(!doc){
-        throw new Error('No record found.');
-      }
-        doc.visitors++;
-        news = doc;
-        db.collection('specprojects').updateOne({id: Number(req.query.id)}, {$set:{visitors: doc.visitors}},
-            function(err, result){
-                assert.equal(null, err);
-                db.close();
-            });
-      res.render('article', {news:news});
-      db.close();
-    });
-  })
-});
-
 router.get('/contacts', function(req, res, next) {
   res.render('contacts');
 });
@@ -148,21 +93,18 @@ router.get('/statut', function(req, res, next) {
   res.render('statut');
 });
 
-router.get('/team', function(req, res, next) {
-  mongo.connect(url, function(err,db){
-    let experts = [];
-    let cursor = db.collection('experts').find().sort({id:1});
-    cursor.forEach(function(doc, err){
-      experts.push(doc);
-    }, function(){
-      db.close();
-      res.render('team', {experts:experts});
-    })
-  })
-});
-
 router.get('/', function(req, res, next) {
-  mongo.connect(url, function(err, db) {
+  // console.log(url)
+  // const client = new MongoClient(url, { useNewUrlParser: true });
+  // MongoClient.connect(url, {dbName: 'newsfeed'} ,(err, db) => {
+  //   console.log(err, db, 'db');
+  //   const collection = db.collection("article").find();
+  //   console.log(collection, 'collections');
+  //   collection.forEach(doc => console.log(doc), () => db.close());
+  //   // perform actions on the collection object
+    
+  // });
+  mongo.connect(url, {dbName: 'newsfeed'}, function(err, db) {
     let main_news, second_news = {};
     let other_news = [];
     let experts = [];
@@ -238,14 +180,14 @@ router.post('/insert', function(req, res, next) {
                 item.specproject = req.body.specproject;
                 collection = "specprojects";
             } else if(req.body.text){
-                    item.id = req.body.id;
-                    item.specproject = req.body.specproject;
-                    collection = "article";
+                  item.id = req.body.id;
+                  item.specproject = req.body.specproject;
+                  collection = "article";
             }
         }
     }
 
-  mongo.connect(url, function(err, db) {
+  mongo.connect(url, {dbName: 'newsfeed'}, function(err, db) {
     assert.equal(null, err);
     db.collection(collection).insertOne(item, function(err, result) {
       assert.equal(null, err);
@@ -271,7 +213,7 @@ router.post('/delete', function (req, res, next) {
         id= parseFloat(req.body.id);
         collection = req.body['delete-elem'];
     }
-    mongo.connect(url, function(err, db) {
+    mongo.connect(url, {dbName: 'newsfeed'}, function(err, db) {
         assert.equal(null, err);
         db.collection(collection).deleteOne({id: id}, function(err, result) {
             assert.equal(null, err);
@@ -282,10 +224,6 @@ router.post('/delete', function (req, res, next) {
     res.redirect('/admin');
 });
 
-/**
- * req.body.? - whatevs element in the form, which sent request
- * ? - name tag of element
- * */
 router.post('/update', function(req, res, next){
 
     let collection;
@@ -357,7 +295,7 @@ router.post('/update', function(req, res, next){
         item.image = req.body.image;
     }
 
-   mongo.connect(url, function(err, db){
+   mongo.connect(url, {dbName: 'newsfeed'}, function(err, db){
        assert.equal(null, err);
        db.collection(collection).updateOne({id: id}, {$set:item}, function(err, result){
            assert.equal(null, err);
