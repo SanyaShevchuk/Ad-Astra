@@ -10,6 +10,7 @@ var assert = require('assert');
 var url = "mongodb+srv://admin:admin@newsfeed-rpxdh.mongodb.net/test?retryWrites=true&w=majority";
 
 router.get('/topic', function(req,res,next){
+  console.log('topic');
   mongo.connect(url, {dbName: 'newsfeed'}, function(err, db){
     var news = [];
     assert.equal(null, err);
