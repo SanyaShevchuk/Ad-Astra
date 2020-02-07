@@ -42,42 +42,17 @@ router.get('/article', function(req, res, next) {
   mongo.connect(url, {dbName: 'newsfeed'}, async function (err, db) {
     let news;
     assert.equal(null, err);
-    const isIdExist = await db.collection('article').find({id: Number(req.query.id)}).count();
-    if(!isIdExist) {
+    const cursor = db.collection('article').find({id: Number(req.query.id)});
+    if(!await cursor.count()) {
       res.redirect('/not-found')
-    }
-
-    let cursor = db.collection('article').aggregate(
-        [
-            {$match:{id: Number(req.query.id)}},
-            {$project:
-                  { _id:0,
-                    id:1,
-                    title:1,
-                    text:1,
-                    description:1,
-                    subtopic:1,
-                    region:1,
-                    topic:1,
-                    author:1,
-                    photoresource:1,
-                    visitors:1,
-                    image:1,
-                    date: 
-                        {
-                          $dateToString:
-                              {format:"%Y-%m-%d", date:"$date"}
-                        }
-                  }
-            },
-            ]);
-    
+    } 
     cursor.forEach(function(doc){
       if(!doc){
         throw new Error('No record found.');
       }
         doc.visitors++;
         news = doc;
+        news.date = new Date(news.date).toLocaleDateString();
         db.collection('article').updateOne({id: Number(req.query.id)}, {$set:{visitors: doc.visitors}},
             function(err, result){
                 assert.equal(null, err);
@@ -85,7 +60,7 @@ router.get('/article', function(req, res, next) {
             });
         res.render('article', {news:news});
     });
-  })
+  })          
 });
 
 router.get('/contacts', function(req, res, next) {
