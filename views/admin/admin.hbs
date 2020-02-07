@@ -27,12 +27,10 @@
                             <select id="insert-elem" class="form-control">
                                 <option value="" selected disabled hidden>Choose here</option>
                                 <option value="usual-article">article</option>
-                                <option value="expert-article">expert article</option>
-                                <option value="experts">expert information</option>
                             </select>
                             <div class="input" id="insert-id">
                                 <label for="id">id</label>
-                                <input type="text" id="id" name="id" placeholder="id of article or expert" required>
+                                <input type="text" id="id" name="id" placeholder="id of article" required>
                             </div>
                             <div class="input" id="insert-name">
                                 <label for="name">name</label>
@@ -78,10 +76,6 @@
                                 <label for="photoresource">photoresource</label>
                                 <input type="text" id="photoresource" name="photoresource" placeholder="photoresource of article">
                             </div>
-                            <div class="input" id="insert-expert">
-                                <label for="expert">expert</label>
-                                <input type="text" id="expert" name="expert" placeholder="id of real expert who wrote article">
-                            </div>
                             <button type="submit">INSERT</button>
                         </form>
                     </section>
@@ -113,8 +107,6 @@
                             <select name="update-elem" id="update-elem" class="form-control">
                                 <option value="" selected disabled hidden>Choose here</option>
                                 <option value="usual-article">article</option>
-                                <option value="expert-article">expert article</option>
-                                <option value="experts">expert</option>
                             </select>
                             <div class="input">
                                 <label for="updateId">ID</label>
@@ -185,7 +177,6 @@
                             <select name="delete-elem" id="delete-elem" class="form-control">
                                 <option value="" selected disabled hidden>Choose here</option>
                                 <option value="article">article</option>
-                                <option value="experts">expert</option>
                             </select>
                             <div class="input">
                                 <label for="id">ID</label>

@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var mongo = require('mongodb').MongoClient;
-var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
 
   // var url = 'mongodb://sheva:sheva@localhost:27017/adastra';
@@ -10,7 +9,6 @@ var assert = require('assert');
 var url = "mongodb+srv://admin:admin@newsfeed-rpxdh.mongodb.net/test?retryWrites=true&w=majority";
 
 router.get('/topic', function(req,res,next){
-  console.log('topic');
   mongo.connect(url, {dbName: 'newsfeed'}, function(err, db){
     var news = [];
     assert.equal(null, err);
@@ -41,10 +39,14 @@ router.get('/region', function(req,res,next){
 })
 
 router.get('/article', function(req, res, next) {
-  mongo.connect(url, {dbName: 'newsfeed'}, function (err, db) {
+  mongo.connect(url, {dbName: 'newsfeed'}, async function (err, db) {
     let news;
-    console.log(db, 'db');
     assert.equal(null, err);
+    const isIdExist = await db.collection('article').find({id: Number(req.query.id)}).count();
+    if(!isIdExist) {
+      res.redirect('/not-found')
+    }
+
     let cursor = db.collection('article').aggregate(
         [
             {$match:{id: Number(req.query.id)}},
@@ -69,7 +71,7 @@ router.get('/article', function(req, res, next) {
                   }
             },
             ]);
-
+    
     cursor.forEach(function(doc){
       if(!doc){
         throw new Error('No record found.');
@@ -95,16 +97,6 @@ router.get('/statut', function(req, res, next) {
 });
 
 router.get('/', function(req, res, next) {
-  // console.log(url)
-  // const client = new MongoClient(url, { useNewUrlParser: true });
-  // MongoClient.connect(url, {dbName: 'newsfeed'} ,(err, db) => {
-  //   console.log(err, db, 'db');
-  //   const collection = db.collection("article").find();
-  //   console.log(collection, 'collections');
-  //   collection.forEach(doc => console.log(doc), () => db.close());
-  //   // perform actions on the collection object
-    
-  // });
   mongo.connect(url, {dbName: 'newsfeed'}, function(err, db) {
     let main_news, second_news = {};
     let other_news = [];
@@ -114,7 +106,6 @@ router.get('/', function(req, res, next) {
     let cursor= db.collection('article').find({expert:{$exists:false}}).sort({date:-1}).limit(8);
     cursor.forEach(function(doc, err) {
       assert.equal(null, err);
-      // if(doc.expert) experts.push(doc)
       if(i==0) {
         main_news = doc;
         i++;
@@ -306,6 +297,12 @@ router.post('/update', function(req, res, next){
    });
 
    res.redirect('/admin');
+});
+
+router.post('/not-found', function(req, res, next){
+ res.render('error.hbs', {
+   message: 'Page is not found'
+ });
 });
 
 module.exports = router;

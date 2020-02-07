@@ -5,7 +5,7 @@ function validate(){
   let login = $('input[type=text]').val();
   let password = $('input[type=password]').val();
 
-  if(login === 'adastra' && password === 'adastra'){
+  if(login === 'newsfeed' && password === 'newsfeed'){
     $('#form').hide();
     $('#admin-menu').show();
 
