@@ -11,7 +11,7 @@
     "debug": "~2.2.0",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
-    "mammoth": "^1.4.8",
+    "mammoth": "^1.5.1",
     "mongodb": "^2.1.11",
     "morgan": "^1.9.1",
     "serve-favicon": "^2.5.0"
